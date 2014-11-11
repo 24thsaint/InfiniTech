@@ -15,15 +15,7 @@ public class SMSTest {
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        //Sender sender = new Sender("+639486258359", "Hello Quim");
-        //sender.send();
-        while (true) {
-            System.out.println("Recipient: ");
-            String num = scanner.nextLine();
-            System.out.println("Message: ");
-            String msg = scanner.nextLine();
-            Sender sender = new Sender(num, msg);
-            sender.send();            
-        }
+        Sender sender = new Sender("+639486258359", "Hello Quim");
+        sender.send();
     }
 }
