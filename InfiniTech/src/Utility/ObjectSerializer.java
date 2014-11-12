@@ -29,7 +29,8 @@ import java.util.logging.Logger;
  */
 public class ObjectSerializer {
 
-    public static final void serializeObject(String fileLocation, Object object) throws FileNotFoundException, IOException {
+    public static final void serializeObject(String fileLocation, Object object) throws IOException {
+
         File file = new File(fileLocation);
         if (!file.exists()) {
             file.createNewFile();
@@ -37,11 +38,18 @@ public class ObjectSerializer {
         FileOutputStream fos = new FileOutputStream(fileLocation);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(object);
+
     }
-    
-    public static final Object deserializeObject(String fileLocation) throws FileNotFoundException, IOException, ClassNotFoundException {
+
+    public static final Object deserializeObject(String fileLocation) throws IOException, ClassNotFoundException {
+
+        File file = new File(fileLocation);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
         FileInputStream fis = new FileInputStream(fileLocation);
         ObjectInputStream ois = new ObjectInputStream(fis);
         return ois.readObject();
+
     }
 }

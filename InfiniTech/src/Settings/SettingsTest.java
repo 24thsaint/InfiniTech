@@ -23,19 +23,18 @@ import java.io.IOException;
  */
 public class SettingsTest {
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-        Settings settings = new Settings();
-        settings.addKeyword("SHIRTSIZE", "LARGE");
-        settings.addKeyword("SHIRTSIZE", "EXTRA LARGE");
-        
-        ObjectSerializer.serializeObject("src/Utility/settingsdata.cfg", settings);
-        
-        Object object = ObjectSerializer.deserializeObject("src/Utility/settingsdata.cfg");
-        
-        if (object instanceof Settings) {
-            settings = (Settings) object;
-        }
-        
-        System.out.println(settings.getKeywords().get("SHIRTSIZE"));
+//        Settings settings = new Settings();
+//        settings.updateKeyword("SHIRTSIZE", "LARGE");
+//        settings.updateKeyword("SHIRTSIZE", "EXTRA LARGE");
+//        
+//        ObjectSerializer.serializeObject("src/Utility/settingsdata.cfg", settings);        
+//        Object object = ObjectSerializer.deserializeObject("src/Utility/settingsdata.cfg");
+//        
+//        if (object instanceof Settings) {
+//            settings = (Settings) object;
+//        }
+//        
+//        System.out.println(settings.getKeywords().get("SHIRTSIZE"));
         
     }
 }
