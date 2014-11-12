@@ -449,7 +449,7 @@ public class SettingsInterface extends javax.swing.JFrame {
 
     private void categoriesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoriesMousePressed
         keywords.setText(ObjectParser.parseListToDelimiter(
-                settings.getInterests().get(categories.getSelectedValue()), "\n"));
+                settings.getInterests().get((String) categories.getSelectedValue()), "\n"));
     }//GEN-LAST:event_categoriesMousePressed
 
     private void keywordsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_keywordsFocusLost
