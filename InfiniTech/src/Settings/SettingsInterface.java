@@ -71,8 +71,9 @@ public class SettingsInterface extends javax.swing.JFrame {
         shirtSizeScroller = new javax.swing.JScrollPane();
         shirtSizes = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        departmentScroller = new javax.swing.JScrollPane();
+        departments = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         interestsPane = new javax.swing.JPanel();
         categoryScroller = new javax.swing.JScrollPane();
         categoryList = new DefaultListModel();
@@ -138,11 +139,25 @@ public class SettingsInterface extends javax.swing.JFrame {
         });
         shirtSizeScroller.setViewportView(shirtSizes);
 
-        jLabel1.setText("Colleges");
+        jLabel1.setText("Departments");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        departments.setColumns(20);
+        departments.setLineWrap(true);
+        departments.setRows(5);
+        departments.setWrapStyleWord(true);
+        departments.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                departmentsFocusLost(evt);
+            }
+        });
+        departments.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                departmentsKeyPressed(evt);
+            }
+        });
+        departmentScroller.setViewportView(departments);
+
+        jLabel2.setText("[one(1) department per line]");
 
         javax.swing.GroupLayout generalPaneLayout = new javax.swing.GroupLayout(generalPane);
         generalPane.setLayout(generalPaneLayout);
@@ -160,14 +175,17 @@ public class SettingsInterface extends javax.swing.JFrame {
                                 .addComponent(deadlineDate, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelDeadlineTip))
-                            .addGroup(generalPaneLayout.createSequentialGroup()
-                                .addComponent(labelShirtSizes)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1))
-                            .addGroup(generalPaneLayout.createSequentialGroup()
-                                .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(generalPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generalPaneLayout.createSequentialGroup()
+                                    .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(departmentScroller))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generalPaneLayout.createSequentialGroup()
+                                    .addComponent(labelShirtSizes)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel2))))
                         .addGap(0, 73, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -184,11 +202,12 @@ public class SettingsInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(generalPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelShirtSizes)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(generalPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(generalPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(shirtSizeScroller, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(departmentScroller))
                 .addContainerGap(226, Short.MAX_VALUE))
         );
 
@@ -422,6 +441,7 @@ public class SettingsInterface extends javax.swing.JFrame {
         actionSaveChanges.setEnabled(false);
         shirtSizes.setText(ObjectParser.parseListToDelimiter(settings.getShirtSizes(), "\n"));
         deadlineDate.setText(settings.getSettings().get("DEADLINE"));
+        departments.setText(ObjectParser.parseListToDelimiter(settings.getDepartments(), "\n"));        
     }//GEN-LAST:event_formWindowOpened
 
     private void shirtSizesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_shirtSizesKeyPressed
@@ -516,6 +536,15 @@ public class SettingsInterface extends javax.swing.JFrame {
         settings.addSetting("DEADLINE", sdf.format(new Date(deadlineDate.getText())));
     }//GEN-LAST:event_deadlineDateFocusLost
 
+    private void departmentsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_departmentsKeyPressed
+        actionSaveChanges.setEnabled(true);
+    }//GEN-LAST:event_departmentsKeyPressed
+
+    private void departmentsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departmentsFocusLost
+        List<String> newDepartments = ObjectParser.parseDelimitedStringToList(this.departments.getText(), "\n");
+        settings.setDepartments(newDepartments);
+    }//GEN-LAST:event_departmentsFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -562,12 +591,13 @@ public class SettingsInterface extends javax.swing.JFrame {
     private javax.swing.JScrollPane categoryScroller;
     private javax.swing.JTextField deadlineDate;
     private javax.swing.JSeparator deadlineSeparator;
+    private javax.swing.JScrollPane departmentScroller;
+    private javax.swing.JTextArea departments;
     private javax.swing.JPanel generalPane;
     private javax.swing.JSeparator interestSeparator;
     private javax.swing.JPanel interestsPane;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane keywordScroller;
     private javax.swing.JTextArea keywords;
     private javax.swing.JLabel keywordsTip;

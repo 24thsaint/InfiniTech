@@ -30,20 +30,21 @@ public class Settings implements Serializable {
     private Map<String, String> settings;
     private List<String> shirtSizes;
     public final static String SETTINGS_LOCATION = "src/Settings/settings.cfg";
-    private static boolean firstRun = true;
-
-    public final static void programActivated() {
-        firstRun = false;
-    }
-
-    public final static boolean isFirstRun() {
-        return firstRun;
-    }
+    private List<String> departments;
 
     public Settings() {
         interests = new HashMap<>();
         shirtSizes = new ArrayList<>();
         settings = new HashMap<>();
+        departments = new ArrayList<>();        
+    }
+
+    public List<String> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<String> departments) {
+        this.departments = departments;
     }
 
     public Map<String, List<String>> getInterests() {
