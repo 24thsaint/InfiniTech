@@ -13,7 +13,7 @@
  */
 package Settings;
 
-import Utility.ObjectSerializer;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +30,15 @@ public class Settings implements Serializable {
     private Map<String, String> settings;
     private List<String> shirtSizes;
     public final static String SETTINGS_LOCATION = "src/Settings/settings.cfg";
+    private static boolean firstRun = true;
+
+    public final static void programActivated() {
+        firstRun = false;
+    }
+
+    public final static boolean isFirstRun() {
+        return firstRun;
+    }
 
     public Settings() {
         interests = new HashMap<>();
@@ -81,5 +90,4 @@ public class Settings implements Serializable {
         }
     }
 
-    
 }

@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
 public class SettingsInterface extends javax.swing.JFrame {
 
     private Settings settings;
-    private DefaultListModel categoryList;
+    private DefaultListModel categoryList;    
 
     /**
      * Creates new form SettingsInterface
@@ -70,6 +70,9 @@ public class SettingsInterface extends javax.swing.JFrame {
         labelShirtSizes = new javax.swing.JLabel();
         shirtSizeScroller = new javax.swing.JScrollPane();
         shirtSizes = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         interestsPane = new javax.swing.JPanel();
         categoryScroller = new javax.swing.JScrollPane();
         categoryList = new DefaultListModel();
@@ -135,6 +138,12 @@ public class SettingsInterface extends javax.swing.JFrame {
         });
         shirtSizeScroller.setViewportView(shirtSizes);
 
+        jLabel1.setText("Colleges");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout generalPaneLayout = new javax.swing.GroupLayout(generalPane);
         generalPane.setLayout(generalPaneLayout);
         generalPaneLayout.setHorizontalGroup(
@@ -151,8 +160,14 @@ public class SettingsInterface extends javax.swing.JFrame {
                                 .addComponent(deadlineDate, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelDeadlineTip))
-                            .addComponent(labelShirtSizes)
-                            .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(generalPaneLayout.createSequentialGroup()
+                                .addComponent(labelShirtSizes)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1))
+                            .addGroup(generalPaneLayout.createSequentialGroup()
+                                .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 73, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -167,9 +182,13 @@ public class SettingsInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deadlineSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelShirtSizes)
+                .addGroup(generalPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelShirtSizes)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(generalPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(shirtSizeScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(226, Short.MAX_VALUE))
         );
 
@@ -391,7 +410,7 @@ public class SettingsInterface extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateSettings() {
+    private void updateSettings() {        
         try {
             ObjectSerializer.serializeObject(Settings.SETTINGS_LOCATION, settings);
         } catch (IOException ex) {
@@ -546,6 +565,9 @@ public class SettingsInterface extends javax.swing.JFrame {
     private javax.swing.JPanel generalPane;
     private javax.swing.JSeparator interestSeparator;
     private javax.swing.JPanel interestsPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane keywordScroller;
     private javax.swing.JTextArea keywords;
     private javax.swing.JLabel keywordsTip;
