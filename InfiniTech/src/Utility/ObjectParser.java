@@ -23,16 +23,16 @@ import java.util.Scanner;
  */
 public class ObjectParser {
 
-    public static final List<String> parseDelimitedStringToList(String sizes, String delimiter) {        
+    public static final List<String> parseDelimitedStringToList(String sizes, String delimiter) {
         List<String> response = new ArrayList<>();
         Scanner scn = new Scanner(sizes);
         scn.useDelimiter(delimiter);
         while (scn.hasNext()) {
             response.add(scn.next());
-        }        
+        }
         return response;
     }
-    
+
     public static final String parseListToDelimiter(List<String> string, String delimiter) {
         StringBuilder sb = new StringBuilder();
         for (String s : string) {

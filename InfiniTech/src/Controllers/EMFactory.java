@@ -11,12 +11,22 @@
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-package Objects;
+package Controllers;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public class Interest {
+public class EMFactory {
+    private static EntityManagerFactory emf;
     
+    public static EntityManagerFactory getEMF() {
+        if (emf==null) {
+            emf = Persistence.createEntityManagerFactory("InfiniTechPU");
+        }
+        return emf;
+    }
 }

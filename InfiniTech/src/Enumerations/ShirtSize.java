@@ -17,27 +17,33 @@ package Enumerations;
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public enum Gender {
+public enum ShirtSize {
 
-    MALE, FEMALE, GAY, BISEXUAL, LESBIAN, TRANSGENDER;
+    TS, TM, TL, TXL, S, M, L, XL, CUSTOM;
 
     @Override
     public String toString() {
         switch (this) {
-            case MALE:
-                return "Male";
-            case FEMALE:
-                return "Female";
-            case GAY:
-                return "Gay";
-            case BISEXUAL:
-                return "Bisexual";
-            case LESBIAN:
-                return "Lesbian";
-            case TRANSGENDER:
-                return "Transgender";
+            case TS:
+                return "Teen Small";
+            case TM:
+                return "Teen Medium";
+            case TL:
+                return "Teen Large";
+            case TXL:
+                return "Teen Extra Large";
+            case S:
+                return "Small";
+            case M:
+                return "Medium";
+            case L:
+                return "Large";
+            case XL:
+                return "Extra Large";
+            case CUSTOM:
+                return "Custom Size";
         }
-        return "GWAPO SI Jaybee Tordesillas";
+        return "Tristan";
     }
 
 }

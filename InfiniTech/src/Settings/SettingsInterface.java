@@ -442,6 +442,10 @@ public class SettingsInterface extends javax.swing.JFrame {
         shirtSizes.setText(ObjectParser.parseListToDelimiter(settings.getShirtSizes(), "\n"));
         deadlineDate.setText(settings.getSettings().get("DEADLINE"));
         departments.setText(ObjectParser.parseListToDelimiter(settings.getDepartments(), "\n"));        
+        
+        for (String shirt : settings.getShirtSizes()) {
+            System.out.println(shirt);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void shirtSizesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_shirtSizesKeyPressed

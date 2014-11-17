@@ -11,33 +11,27 @@
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-package Enumerations;
+package Objects;
+
+import Controllers.EMFactory;
+import Controllers.StudentController;
+import Controllers.exceptions.NonexistentEntityException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public enum Gender {
-
-    MALE, FEMALE, GAY, BISEXUAL, LESBIAN, TRANSGENDER;
-
-    @Override
-    public String toString() {
-        switch (this) {
-            case MALE:
-                return "Male";
-            case FEMALE:
-                return "Female";
-            case GAY:
-                return "Gay";
-            case BISEXUAL:
-                return "Bisexual";
-            case LESBIAN:
-                return "Lesbian";
-            case TRANSGENDER:
-                return "Transgender";
-        }
-        return "GWAPO SI Jaybee Tordesillas";
+public class StudentTest {
+    public static void main(String[] args) throws NonexistentEntityException {
+//        
+//        StudentController sc = new StudentController(EMFactory.getEMF());        
+//        List<Student> s = sc.getStudentAlphabetically();
+//        
+//        for (Student s1 : s) {
+//            System.out.println(s1.getFirstName() + " " + s1.getLastName());
+//        }
+//        
     }
-
 }

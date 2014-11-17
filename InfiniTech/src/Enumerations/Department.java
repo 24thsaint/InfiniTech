@@ -17,27 +17,29 @@ package Enumerations;
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public enum Gender {
+public enum Department {
 
-    MALE, FEMALE, GAY, BISEXUAL, LESBIAN, TRANSGENDER;
+    ChE, EE, ECE, CE, SE, PkgE, ME;
 
     @Override
     public String toString() {
         switch (this) {
-            case MALE:
-                return "Male";
-            case FEMALE:
-                return "Female";
-            case GAY:
-                return "Gay";
-            case BISEXUAL:
-                return "Bisexual";
-            case LESBIAN:
-                return "Lesbian";
-            case TRANSGENDER:
-                return "Transgender";
+            case ChE:
+                return "Chemical Engineering";
+            case EE:
+                return "Electrical Engineering";
+            case ECE:
+                return "Elec'&Comm' Engineering";
+            case CE:
+                return "Civil Engineering";
+            case SE:
+                return "Software Engineering <3";
+            case PkgE:
+                return "Packaging Engineering";
+            case ME:
+                return "Mechanical Engineering";
         }
-        return "GWAPO SI Jaybee Tordesillas";
+        return "Gwapa si Violet";
     }
 
 }

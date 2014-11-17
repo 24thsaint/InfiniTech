@@ -17,27 +17,27 @@ package Enumerations;
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public enum Gender {
+public enum YearLevel {
 
-    MALE, FEMALE, GAY, BISEXUAL, LESBIAN, TRANSGENDER;
+    FIRST_YEAR, SECOND_YEAR, THIRD_YEAR, FOURTH_YEAR, FIFTH_YEAR, SIXTH_YEAR;
 
     @Override
     public String toString() {
         switch (this) {
-            case MALE:
-                return "Male";
-            case FEMALE:
-                return "Female";
-            case GAY:
-                return "Gay";
-            case BISEXUAL:
-                return "Bisexual";
-            case LESBIAN:
-                return "Lesbian";
-            case TRANSGENDER:
-                return "Transgender";
+            case FIRST_YEAR:
+                return "First Year";
+            case SECOND_YEAR:
+                return "Second Year";
+            case THIRD_YEAR:
+                return "Third Year";
+            case FOURTH_YEAR:
+                return "Fourth Year";
+            case FIFTH_YEAR:
+                return "Fifth Year";
+            case SIXTH_YEAR:
+                return "Sixth Year";
         }
-        return "GWAPO SI Jaybee Tordesillas";
+        return null;
     }
 
 }
