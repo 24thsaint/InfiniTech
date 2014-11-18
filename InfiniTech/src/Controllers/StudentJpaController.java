@@ -28,9 +28,9 @@ import javax.persistence.criteria.Root;
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public class StudentController implements Serializable {
+public class StudentJpaController implements Serializable {
 
-    public StudentController(EntityManagerFactory emf) {
+    public StudentJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -142,10 +142,5 @@ public class StudentController implements Serializable {
             em.close();
         }
     }
-
-    public List<Student> getStudentAlphabetically() {
-        EntityManager em = getEntityManager();
-        Query q = em.createQuery("SELECT s FROM Student s ORDER BY s.lastName");
-        return q.getResultList();
-    }
+    
 }

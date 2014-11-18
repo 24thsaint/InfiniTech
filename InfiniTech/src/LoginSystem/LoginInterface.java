@@ -13,6 +13,10 @@
  */
 package LoginSystem;
 
+import MainInterface.Main;
+import Objects.Council;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
@@ -37,10 +41,10 @@ public class LoginInterface extends javax.swing.JFrame {
 
         loginHeader = new javax.swing.JLabel();
         labelIdNumber = new javax.swing.JLabel();
-        idNumber = new javax.swing.JTextField();
         labelPassword = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
         actionLogin = new javax.swing.JButton();
+        password = new javax.swing.JPasswordField();
+        idNumber = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +60,22 @@ public class LoginInterface extends javax.swing.JFrame {
         labelPassword.setText("Password");
 
         actionLogin.setText("Login");
+        actionLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionLoginActionPerformed(evt);
+            }
+        });
+
+        password.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        try {
+            idNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        idNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        idNumber.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,11 +88,12 @@ public class LoginInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idNumber, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(actionLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(idNumber)
+                        .addComponent(labelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(actionLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,19 +104,44 @@ public class LoginInterface extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelIdNumber)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actionLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actionLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionLoginActionPerformed
+        Council council = EntryPoint.getCouncilControl().findCouncil(
+                Long.parseLong(idNumber.getText().replaceAll("-", "")));
+
+        if (council == null) {
+            JOptionPane.showMessageDialog(null,
+                    "Council account does not exist!",
+                    "Account Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (council.getPassword().equals(String.valueOf(password.getPassword()))) {
+            Main main = new Main();
+            main.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Invalid ID/password!",
+                    "Invalid",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_actionLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,10 +180,10 @@ public class LoginInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actionLogin;
-    private javax.swing.JTextField idNumber;
+    private javax.swing.JFormattedTextField idNumber;
     private javax.swing.JLabel labelIdNumber;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel loginHeader;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }

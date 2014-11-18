@@ -9,8 +9,15 @@ import Enumerations.*;
 import Objects.Council;
 import Objects.Shirt;
 import Objects.Student;
+import Settings.Settings;
+import Settings.SettingsInterface;
+import Utility.ObjectSerializer;
 import java.awt.Component;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -35,37 +42,36 @@ public class RegistrationInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rootPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         labelHeader = new javax.swing.JLabel();
-        headerSeparator = new javax.swing.JSeparator();
+        rootPanel = new javax.swing.JPanel();
         labelIDNumber = new javax.swing.JLabel();
         idNumber = new javax.swing.JFormattedTextField();
         labelPassword = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
-        lastName = new javax.swing.JTextField();
-        labelLastName = new javax.swing.JLabel();
-        firstName = new javax.swing.JTextField();
         labelFirstName = new javax.swing.JLabel();
+        firstName = new javax.swing.JTextField();
+        labelLastName = new javax.swing.JLabel();
+        lastName = new javax.swing.JTextField();
         labelDepartment = new javax.swing.JLabel();
         department = new javax.swing.JComboBox();
         labelYear = new javax.swing.JLabel();
         yearLevel = new javax.swing.JComboBox();
         labelGender = new javax.swing.JLabel();
         gender = new javax.swing.JComboBox();
-        customSize = new javax.swing.JTextField();
-        labelCustomSize = new javax.swing.JLabel();
-        shirtSize = new javax.swing.JComboBox();
         labelShirtSize = new javax.swing.JLabel();
+        shirtSize = new javax.swing.JComboBox();
+        labelCustomSize = new javax.swing.JLabel();
+        customSize = new javax.swing.JTextField();
         labelInterest = new javax.swing.JLabel();
         interestScroller = new javax.swing.JScrollPane();
         interests = new javax.swing.JTextArea();
-        tipInterest = new javax.swing.JLabel();
         labelEmail = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         labelContact = new javax.swing.JLabel();
         contact = new javax.swing.JTextField();
-        payment = new javax.swing.JTextField();
         labelPayment = new javax.swing.JLabel();
+        payment = new javax.swing.JTextField();
         actionRegister = new javax.swing.JButton();
         actionCancel = new javax.swing.JButton();
 
@@ -80,8 +86,10 @@ public class RegistrationInterface extends javax.swing.JFrame {
         labelHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelHeader.setText("Register Student");
 
-        labelIDNumber.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        rootPanel.setLayout(new java.awt.GridLayout(13, 2));
+
         labelIDNumber.setText("ID Number");
+        rootPanel.add(labelIDNumber);
 
         try {
             idNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-####-##")));
@@ -89,37 +97,48 @@ public class RegistrationInterface extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         idNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        rootPanel.add(idNumber);
 
         labelPassword.setText("Password");
+        rootPanel.add(labelPassword);
 
         password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        rootPanel.add(password);
+
+        labelFirstName.setText("First Name");
+        rootPanel.add(labelFirstName);
+        rootPanel.add(firstName);
 
         labelLastName.setText("Last Name");
+        rootPanel.add(labelLastName);
+        rootPanel.add(lastName);
 
-        labelFirstName.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelFirstName.setText("First Name");
-
-        labelDepartment.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelDepartment.setText("Department");
+        rootPanel.add(labelDepartment);
 
         for(Department d : Department.values()) {
             department.addItem(d);
         }
+        rootPanel.add(department);
 
-        labelYear.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelYear.setText("Year");
+        rootPanel.add(labelYear);
 
         for(YearLevel y: YearLevel.values()) {
             yearLevel.addItem(y);
         }
+        rootPanel.add(yearLevel);
 
         labelGender.setText("Gender");
+        rootPanel.add(labelGender);
 
         for(Gender g : Gender.values()) {
             gender.addItem(g);
         }
+        rootPanel.add(gender);
 
-        labelCustomSize.setText("Custom Size:");
+        labelShirtSize.setText("Shirtsize");
+        rootPanel.add(labelShirtSize);
 
         for(ShirtSize s : ShirtSize.values()) {
             shirtSize.addItem(s);
@@ -129,12 +148,14 @@ public class RegistrationInterface extends javax.swing.JFrame {
                 shirtSizeActionPerformed(evt);
             }
         });
+        rootPanel.add(shirtSize);
 
-        labelShirtSize.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelShirtSize.setText("Shirtsize");
+        labelCustomSize.setText("Custom Size:");
+        rootPanel.add(labelCustomSize);
+        rootPanel.add(customSize);
 
-        labelInterest.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelInterest.setText("Interest");
+        labelInterest.setText("Interests");
+        rootPanel.add(labelInterest);
 
         interests.setColumns(20);
         interests.setLineWrap(true);
@@ -142,19 +163,22 @@ public class RegistrationInterface extends javax.swing.JFrame {
         interests.setWrapStyleWord(true);
         interestScroller.setViewportView(interests);
 
-        tipInterest.setText("One(1) interest per line");
+        rootPanel.add(interestScroller);
 
-        labelEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelEmail.setText("Email");
+        rootPanel.add(labelEmail);
+        rootPanel.add(email);
 
-        labelContact.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelContact.setText("Contact");
+        rootPanel.add(labelContact);
+        rootPanel.add(contact);
+
+        labelPayment.setText("Payment");
+        rootPanel.add(labelPayment);
 
         payment.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         payment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        labelPayment.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelPayment.setText("Payment");
+        rootPanel.add(payment);
 
         actionRegister.setText("Register");
         actionRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -170,145 +194,53 @@ public class RegistrationInterface extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout rootPanelLayout = new javax.swing.GroupLayout(rootPanel);
-        rootPanel.setLayout(rootPanelLayout);
-        rootPanelLayout.setHorizontalGroup(
-            rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rootPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(headerSeparator)
-                    .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(labelIDNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(labelDepartment, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(firstName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(rootPanelLayout.createSequentialGroup()
-                                        .addComponent(labelLastName)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(password)
-                                    .addComponent(lastName, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addComponent(department, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelYear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(yearLevel, 0, 132, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelGender)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
-            .addGroup(rootPanelLayout.createSequentialGroup()
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addComponent(labelShirtSize, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shirtSize, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelCustomSize)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(customSize))
-                    .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addComponent(payment)
-                                .addGap(24, 24, 24)
-                                .addComponent(actionRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(actionRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(actionCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addComponent(email)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelContact)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addComponent(labelInterest, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(interestScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipInterest, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(actionCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        rootPanelLayout.setVerticalGroup(
-            rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(headerSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelIDNumber)
-                    .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPassword)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelFirstName)
-                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelLastName)
-                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDepartment)
-                    .addComponent(department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelYear)
-                    .addComponent(yearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelGender)
-                    .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(shirtSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelShirtSize)
-                    .addComponent(customSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCustomSize))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelInterest)
-                    .addComponent(interestScroller)
-                    .addComponent(tipInterest, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelEmail)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelContact)
-                    .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPayment)
-                    .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actionRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actionCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(actionRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(actionCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rootPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -320,37 +252,48 @@ public class RegistrationInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_actionCancelActionPerformed
 
     private void actionRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionRegisterActionPerformed
+        String id = idNumber.getText().replaceAll("-", "");
+
         if (godAccountActive) {
             Council council = new Council();
-            council.setId(Long.parseLong(idNumber.getText()));
+            council.setId(Long.parseLong(id));
             council.setFirstName(firstName.getText());
-            council.setLastName(firstName.getText());
-            council.setPassword(Arrays.toString(password.getPassword()));
+            council.setLastName(lastName.getText());
+            council.setPassword(String.valueOf(password.getPassword()));
             council.setDepartment(Department.values()[department.getSelectedIndex()]);
-            council.setGender(Gender.values()[department.getSelectedIndex()]);
+            council.setGender(Gender.values()[gender.getSelectedIndex()]);
             council.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
-            Shirt shirt2 = new Shirt();
-            shirt2.setClaimed(false);
-            shirt2.setShirtSize(
+            Shirt shirt = new Shirt();
+            shirt.setClaimed(false);
+            shirt.setShirtSize(
                     customSize.isEnabled() ? customSize.getText()
                             : shirtSize.getSelectedItem().toString()
             );
-            council.setShirt(shirt2);
-            council.setInterest(interests.getText());
+            council.setShirt(shirt);
+            council.setInterest(interests.getText().toUpperCase());
             council.setEmail(email.getText());
             council.setContact(contact.getText());
             council.setPayment(Double.parseDouble(payment.getText()));
             EntryPoint.getCouncilControl().create(council);
+            try {
+                ObjectSerializer.serializeObject(Settings.SETTINGS_LOCATION, new Settings());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null,
+                        "Error:" + ex.getMessage(),
+                        "Runtime Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            new SettingsInterface().setVisible(true);
             this.dispose();
             return;
         }
 
         Student student = new Student();
-        student.setId(Long.parseLong(idNumber.getText()));
+        student.setId(Long.parseLong(id));
         student.setFirstName(firstName.getText());
-        student.setLastName(firstName.getText());
+        student.setLastName(lastName.getText());
         student.setDepartment(Department.values()[department.getSelectedIndex()]);
-        student.setGender(Gender.values()[department.getSelectedIndex()]);
+        student.setGender(Gender.values()[gender.getSelectedIndex()]);
         student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
         Shirt shirt = new Shirt();
         shirt.setClaimed(false);
@@ -359,7 +302,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
                         : shirtSize.getSelectedItem().toString()
         );
         student.setShirt(shirt);
-        student.setInterest(interests.getText());
+        student.setInterest(interests.getText().toUpperCase());
         student.setEmail(email.getText());
         student.setContact(contact.getText());
         student.setPayment(Double.parseDouble(payment.getText()));
@@ -378,6 +321,9 @@ public class RegistrationInterface extends javax.swing.JFrame {
 
         labelPassword.setVisible(godAccountActive);
         password.setVisible(godAccountActive);
+
+        labelHeader.setText(godAccountActive
+                ? "Council Registration" : "Student Registration");
 
         customSize.setVisible(false);
         labelCustomSize.setVisible(false);
@@ -438,10 +384,10 @@ public class RegistrationInterface extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JTextField firstName;
     private javax.swing.JComboBox gender;
-    private javax.swing.JSeparator headerSeparator;
     private javax.swing.JFormattedTextField idNumber;
     private javax.swing.JScrollPane interestScroller;
     private javax.swing.JTextArea interests;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelContact;
     private javax.swing.JLabel labelCustomSize;
     private javax.swing.JLabel labelDepartment;
@@ -461,7 +407,6 @@ public class RegistrationInterface extends javax.swing.JFrame {
     private javax.swing.JTextField payment;
     private javax.swing.JPanel rootPanel;
     private javax.swing.JComboBox shirtSize;
-    private javax.swing.JLabel tipInterest;
     private javax.swing.JComboBox yearLevel;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,7 +19,9 @@ import Controllers.LogJpaController;
 import Controllers.ShirtJpaController;
 import Controllers.StudentJpaController;
 import Settings.Settings;
+import Utility.ObjectSerializer;
 import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -30,7 +32,7 @@ public class EntryPoint {
     private final static CouncilJpaController COUNCIL_CONTROL = new CouncilJpaController(EMFactory.getEMF());
     private final static LogJpaController LOG_CONTROL = new LogJpaController(EMFactory.getEMF());
     private final static ShirtJpaController SHIRT_CONTROL = new ShirtJpaController(EMFactory.getEMF());
-    private final static StudentJpaController STUDENT_CONTROL = new StudentJpaController(EMFactory.getEMF());
+    private final static StudentJpaController STUDENT_CONTROL = new StudentJpaController(EMFactory.getEMF());    
 
     public static CouncilJpaController getCouncilControl() {
         return COUNCIL_CONTROL;
@@ -47,8 +49,8 @@ public class EntryPoint {
     public static StudentJpaController getStudentControl() {
         return STUDENT_CONTROL;
     }
-
-    public static void main(String[] args) {
+    
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         File file = new File(Settings.SETTINGS_LOCATION);
         if (file.exists()) {
             new LoginInterface().setVisible(true);

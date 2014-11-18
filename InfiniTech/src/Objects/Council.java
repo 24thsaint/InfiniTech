@@ -13,25 +13,25 @@
  */
 package Objects;
 
-import Controllers.EMFactory;
-import Controllers.StudentController;
-import Controllers.exceptions.NonexistentEntityException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public class StudentTest {
-    public static void main(String[] args) throws NonexistentEntityException {
-//        
-//        StudentController sc = new StudentController(EMFactory.getEMF());        
-//        List<Student> s = sc.getStudentAlphabetically();
-//        
-//        for (Student s1 : s) {
-//            System.out.println(s1.getFirstName() + " " + s1.getLastName());
-//        }
-//        
+@Entity
+public class Council extends Student implements Serializable {
+
+    private static final long serialVersionUID = 1L;        
+    private String password;
+
+    public String getPassword() {
+        return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

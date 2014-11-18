@@ -16,56 +16,41 @@ package Objects;
 import Enumerations.*;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String lastName;
     private String firstName;
-    private String shirtSize;
-    private Department department;
-    private YearLevel yearLevel;
-    private Gender gender;
     private String interest;
     private double payment;
     private String email;
     private String contact;
     private boolean isCoordinator;
-    private boolean hasClaimedShirt;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Shirt shirt;
+    @Enumerated(EnumType.STRING)
+    private Department department;
+    @Enumerated(EnumType.STRING)
+    private YearLevel yearLevel;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
-    public String getLastName() {
-        return lastName;
+    public Shirt getShirt() {
+        return shirt;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getShirtSize() {
-        return shirtSize;
-    }
-
-    public void setShirtSize(String shirtSize) {
-        this.shirtSize = shirtSize;
+    public void setShirt(Shirt shirt) {
+        this.shirt = shirt;
     }
 
     public Department getDepartment() {
@@ -90,6 +75,22 @@ public class Student implements Serializable {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getInterest() {
@@ -132,14 +133,6 @@ public class Student implements Serializable {
         this.isCoordinator = isCoordinator;
     }
 
-    public boolean hasClaimedShirt() {
-        return hasClaimedShirt;
-    }
-
-    public void setClaimedShirt(boolean hasClaimedShirt) {
-        this.hasClaimedShirt = hasClaimedShirt;
-    }   
-    
     public Long getId() {
         return id;
     }
@@ -170,7 +163,7 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return this.firstName + " " + this.lastName;
+        return "Objects.Student[ id=" + id + " ]";
     }
 
 }
