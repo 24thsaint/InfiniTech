@@ -60,7 +60,7 @@
           <Font name="Century Schoolbook L" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Welcome Future Engineer!"/>
+        <Property name="text" type="java.lang.String" value="Welcome Future Engineers!"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -51,7 +51,7 @@ public class GodInterface extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Welcome Future Engineer!");
+        jLabel2.setText("Welcome Future Engineers!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +79,9 @@ public class GodInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new SettingsInterface().setVisible(true);
+        RegistrationInterface ri = new RegistrationInterface();
+        ri.activateGodAccount();
+        ri.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

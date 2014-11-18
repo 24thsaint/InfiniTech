@@ -26,374 +26,377 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelHeader" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="labelShirtSize" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="shirtSize" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="labelCustomSize" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="customSize" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="labelEmail" max="32767" attributes="0"/>
-                          <Component id="labelPayment" pref="81" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="payment" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="actionRegister" min="-2" pref="115" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="actionCancel" min="-2" pref="111" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="email" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelContact" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="contact" min="-2" pref="195" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="labelInterest" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="interestScroller" pref="0" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tipInterest" min="-2" pref="250" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="headerSeparator" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="labelIDNumber" pref="75" max="32767" attributes="0"/>
-                              <Component id="labelFirstName" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="labelDepartment" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="firstName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="idNumber" alignment="0" pref="191" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="labelPassword" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelLastName" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="password" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lastName" alignment="1" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="department" min="-2" pref="191" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelYear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="yearLevel" pref="126" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelGender" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gender" min="-2" pref="74" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
+          <Component id="rootPanel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="labelHeader" min="-2" pref="27" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="headerSeparator" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelIDNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="idNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="firstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lastName" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="department" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelYear" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="yearLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="gender" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="shirtSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelShirtSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="customSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelCustomSize" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="labelInterest" min="-2" max="-2" attributes="0"/>
-                  <Component id="interestScroller" pref="109" max="32767" attributes="0"/>
-                  <Component id="tipInterest" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelContact" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="contact" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelPayment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="payment" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
-                  <Component id="actionRegister" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="actionCancel" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
+          <Component id="rootPanel" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="labelIDNumber">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="ID Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelFirstName">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="First Name"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelShirtSize">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Shirtsize"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelDepartment">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Department"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelYear">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Year"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelInterest">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Interest"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelPayment">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Payment"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelEmail">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Email"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelContact">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Contact"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="actionRegister">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Register"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actionRegisterActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="actionCancel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cancel"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actionCancelActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="firstName">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNameActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="payment">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="DejaVu Sans" size="18" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="email">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="contact">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contactActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="department">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="departmentActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(Department d : Department.values()) {&#xa;    department.addItem(d);&#xa;}"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="shirtSize">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shirtSizeActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(ShirtSize s : ShirtSize.values()) {&#xa;    shirtSize.addItem(s);&#xa;}"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelHeader">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="DejaVu Sans" size="18" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Register Student"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="yearLevel">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(YearLevel y: YearLevel.values()) {&#xa;    yearLevel.addItem(y);&#xa;}"/>
-      </AuxValues>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="interestScroller">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
+    <Container class="javax.swing.JPanel" name="rootPanel">
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="headerSeparator" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="labelIDNumber" max="32767" attributes="0"/>
+                                  <Component id="labelFirstName" min="-2" pref="75" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="labelDepartment" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="firstName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="idNumber" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="labelPassword" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelLastName" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="password" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lastName" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="department" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelYear" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="yearLevel" pref="132" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelGender" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="gender" min="-2" pref="74" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="labelHeader" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="labelShirtSize" min="-2" pref="81" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="shirtSize" min="-2" pref="156" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="labelCustomSize" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="customSize" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="labelEmail" max="32767" attributes="0"/>
+                              <Component id="labelPayment" min="-2" pref="81" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="payment" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="actionRegister" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="actionCancel" min="-2" pref="111" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="email" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelContact" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="contact" min="-2" pref="195" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="labelInterest" min="-2" pref="81" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="interestScroller" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tipInterest" min="-2" pref="250" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="labelHeader" min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="headerSeparator" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelIDNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="idNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="firstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelDepartment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="department" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="yearLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gender" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="shirtSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelShirtSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="customSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelCustomSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="labelInterest" min="-2" max="-2" attributes="0"/>
+                      <Component id="interestScroller" max="32767" attributes="0"/>
+                      <Component id="tipInterest" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelContact" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="contact" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelPayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="payment" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="actionRegister" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="actionCancel" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="interests">
+        <Component class="javax.swing.JLabel" name="labelHeader">
           <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="lineWrap" type="boolean" value="true"/>
-            <Property name="rows" type="int" value="5"/>
-            <Property name="wrapStyleWord" type="boolean" value="true"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="DejaVu Sans" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Register Student"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="headerSeparator">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelIDNumber">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="ID Number"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="idNumber">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##-####-##" subtype="-1" type="5"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelPassword">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Password"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="password">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="lastName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelLastName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Last Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="firstName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelFirstName">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="First Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelDepartment">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Department"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="department">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(Department d : Department.values()) {&#xa;    department.addItem(d);&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelYear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Year"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="yearLevel">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(YearLevel y: YearLevel.values()) {&#xa;    yearLevel.addItem(y);&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelGender">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gender"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="gender">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(Gender g : Gender.values()) {&#xa;    gender.addItem(g);&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="customSize">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelCustomSize">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Custom Size:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="shirtSize">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shirtSizeActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(ShirtSize s : ShirtSize.values()) {&#xa;    shirtSize.addItem(s);&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelShirtSize">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Shirtsize"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelInterest">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Interest"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="interestScroller">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="interests">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="wrapStyleWord" type="boolean" value="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="tipInterest">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="One(1) interest per line"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelEmail">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Email"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="email">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelContact">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Contact"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="contact">
+        </Component>
+        <Component class="javax.swing.JTextField" name="payment">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="DejaVu Sans" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelPayment">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="text" type="java.lang.String" value="Payment"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="actionRegister">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Register"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actionRegisterActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="actionCancel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cancel"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actionCancelActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JFormattedTextField" name="idNumber">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="##-####-##" subtype="-1" type="5"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSeparator" name="headerSeparator">
-    </Component>
-    <Component class="javax.swing.JTextField" name="customSize">
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelCustomSize">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Custom Size:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="tipInterest">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="One(1) interest per line"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelGender">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Gender"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="gender">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="for(Gender g : Gender.values()) {&#xa;    gender.addItem(g);&#xa;}"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelPassword">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Password"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="password">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelLastName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Last Name"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="lastName">
-    </Component>
   </SubComponents>
 </Form>
