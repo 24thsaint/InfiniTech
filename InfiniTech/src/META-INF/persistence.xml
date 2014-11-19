@@ -6,6 +6,7 @@
     <class>Objects.Council</class>
     <class>Objects.Log</class>
     <class>Objects.Shirt</class>
+    <class>Practice.Person</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/escrecordsystem?zeroDateTimeBehavior=convertToNull"/>
