@@ -1,4 +1,4 @@
-package Controllers.exceptions;
+package DatabaseConnectivity.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

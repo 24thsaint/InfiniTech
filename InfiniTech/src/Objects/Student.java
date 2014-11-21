@@ -13,9 +13,12 @@
  */
 package Objects;
 
-import Enumerations.*;
+import DatabaseConnectivity.Finder;
+import DatabaseConnectivity.Model;
+import Enumerations.Department;
+import Enumerations.Gender;
+import Enumerations.YearLevel;
 import java.io.Serializable;
-import javax.persistence.Entity;
 import javax.persistence.*;
 
 /**
@@ -24,7 +27,7 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Student implements Serializable {
+public class Student extends Model implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,38 +47,9 @@ public class Student implements Serializable {
     private YearLevel yearLevel;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    public Shirt getShirt() {
-        return shirt;
-    }
-
-    public void setShirt(Shirt shirt) {
-        this.shirt = shirt;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public YearLevel getYearLevel() {
-        return yearLevel;
-    }
-
-    public void setYearLevel(YearLevel yearLevel) {
-        this.yearLevel = yearLevel;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+    
+    @Transient
+    private static final Finder<Student> finder = new Finder<>("Student");
 
     public String getLastName() {
         return lastName;
@@ -125,12 +99,48 @@ public class Student implements Serializable {
         this.contact = contact;
     }
 
-    public boolean isCoordinator() {
+    public boolean isIsCoordinator() {
         return isCoordinator;
     }
 
-    public void setCoordinator(boolean isCoordinator) {
+    public void setIsCoordinator(boolean isCoordinator) {
         this.isCoordinator = isCoordinator;
+    }
+
+    public Shirt getShirt() {
+        return shirt;
+    }
+
+    public void setShirt(Shirt shirt) {
+        this.shirt = shirt;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public YearLevel getYearLevel() {
+        return yearLevel;
+    }
+
+    public void setYearLevel(YearLevel yearLevel) {
+        this.yearLevel = yearLevel;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }           
+
+    public static Finder<Student> getStudentFinder() {
+        return finder;
     }
 
     public Long getId() {

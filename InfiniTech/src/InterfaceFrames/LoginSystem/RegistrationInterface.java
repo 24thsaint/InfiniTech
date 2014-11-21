@@ -3,22 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LoginSystem;
+package InterfaceFrames.LoginSystem;
 
 import Enumerations.*;
 import Objects.Council;
 import Objects.Shirt;
 import Objects.Student;
-import Settings.Settings;
-import Settings.SettingsInterface;
-import Utility.ObjectSerializer;
-import java.awt.Component;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -274,40 +264,28 @@ public class RegistrationInterface extends javax.swing.JFrame {
             council.setEmail(email.getText());
             council.setContact(contact.getText());
             council.setPayment(Double.parseDouble(payment.getText()));
-            EntryPoint.getCouncilControl().create(council);
-            try {
-                ObjectSerializer.serializeObject(Settings.SETTINGS_LOCATION, new Settings());
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null,
-                        "Error:" + ex.getMessage(),
-                        "Runtime Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-            new SettingsInterface().setVisible(true);
-            this.dispose();
-            return;
+            council.save();
+        } else {
+            Student student = new Student();
+            student.setId(Long.parseLong(id));
+            student.setFirstName(firstName.getText());
+            student.setLastName(lastName.getText());
+            student.setDepartment(Department.values()[department.getSelectedIndex()]);
+            student.setGender(Gender.values()[gender.getSelectedIndex()]);
+            student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
+            Shirt shirt = new Shirt();
+            shirt.setClaimed(false);
+            shirt.setShirtSize(
+                    customSize.isEnabled() ? customSize.getText()
+                            : shirtSize.getSelectedItem().toString()
+            );
+            student.setShirt(shirt);
+            student.setInterest(interests.getText().toUpperCase());
+            student.setEmail(email.getText());
+            student.setContact(contact.getText());
+            student.setPayment(Double.parseDouble(payment.getText()));
+            student.save();
         }
-
-        Student student = new Student();
-        student.setId(Long.parseLong(id));
-        student.setFirstName(firstName.getText());
-        student.setLastName(lastName.getText());
-        student.setDepartment(Department.values()[department.getSelectedIndex()]);
-        student.setGender(Gender.values()[gender.getSelectedIndex()]);
-        student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
-        Shirt shirt = new Shirt();
-        shirt.setClaimed(false);
-        shirt.setShirtSize(
-                customSize.isEnabled() ? customSize.getText()
-                        : shirtSize.getSelectedItem().toString()
-        );
-        student.setShirt(shirt);
-        student.setInterest(interests.getText().toUpperCase());
-        student.setEmail(email.getText());
-        student.setContact(contact.getText());
-        student.setPayment(Double.parseDouble(payment.getText()));
-        EntryPoint.getStudentControl().create(student);
-        this.dispose();
     }//GEN-LAST:event_actionRegisterActionPerformed
 
     private void shirtSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shirtSizeActionPerformed
@@ -318,13 +296,10 @@ public class RegistrationInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_shirtSizeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
         labelPassword.setVisible(godAccountActive);
         password.setVisible(godAccountActive);
-
         labelHeader.setText(godAccountActive
                 ? "Council Registration" : "Student Registration");
-
         customSize.setVisible(false);
         labelCustomSize.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
@@ -359,6 +334,8 @@ public class RegistrationInterface extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RegistrationInterface.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

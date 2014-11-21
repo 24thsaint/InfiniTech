@@ -11,22 +11,27 @@
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-package Controllers;
+package InterfaceFrames;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import InterfaceFrames.LoginSystem.GodInterface;
+import InterfaceFrames.LoginSystem.LoginInterface;
+import Objects.Council;
+import java.util.List;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public class EMFactory {
-    private static EntityManagerFactory emf;
-    
-    public static EntityManagerFactory getEMF() {
-        if (emf==null) {
-            emf = Persistence.createEntityManagerFactory("InfiniTechPU");
+public class MainEntry {
+
+    public static void main(String[] args) {
+        List<Council> council = Council.getCouncilFinder().findAll();
+        if (council.isEmpty()) {
+            GodInterface godInterface = new GodInterface();
+            godInterface.setVisible(true);
+        } else {
+            LoginInterface loginInterface = new LoginInterface();
+            loginInterface.setVisible(true);
         }
-        return emf;
     }
 }

@@ -11,10 +11,13 @@
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-package LoginSystem;
+package InterfaceFrames.LoginSystem;
 
-import MainInterface.Main;
+import Enumerations.LogType;
+import InterfaceFrames.Main.Dashboard;
 import Objects.Council;
+import Objects.Log;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,11 +92,10 @@ public class LoginInterface extends javax.swing.JFrame {
                 .addGap(152, 152, 152)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(idNumber)
-                        .addComponent(labelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actionLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
+                    .addComponent(idNumber)
+                    .addComponent(labelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(actionLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,9 +121,10 @@ public class LoginInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void actionLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionLoginActionPerformed
-        Council council = EntryPoint.getCouncilControl().findCouncil(
-                Long.parseLong(idNumber.getText().replaceAll("-", "")));
-
+        Council council = Council
+                .getCouncilFinder()
+                .findRecordById(Long.parseLong(idNumber.getText().replaceAll("-", "")));
+        
         if (council == null) {
             JOptionPane.showMessageDialog(null,
                     "Council account does not exist!",
@@ -129,18 +132,25 @@ public class LoginInterface extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         if (council.getPassword().equals(String.valueOf(password.getPassword()))) {
-            Main main = new Main();
-            main.setVisible(true);
+            Dashboard dashboard = new Dashboard();
+            dashboard.setCouncil(council);
+            dashboard.setVisible(true);
+            
+            Log log = new Log();
+            log.setLogType(LogType.LOGIN);
+            log.setLogDate(new Date());
+            log.setDescription("Council " + council.getFirstName() + " has logged in.");
+            council.addLog(log);
+            
+            council.update();
         } else {
             JOptionPane.showMessageDialog(null,
                     "Invalid ID/password!",
                     "Invalid",
                     JOptionPane.ERROR_MESSAGE);
         }
-
-
     }//GEN-LAST:event_actionLoginActionPerformed
 
     /**
@@ -168,6 +178,7 @@ public class LoginInterface extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

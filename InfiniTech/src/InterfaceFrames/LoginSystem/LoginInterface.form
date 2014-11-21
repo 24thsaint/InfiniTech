@@ -32,12 +32,10 @@
               <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="password" pref="177" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="idNumber" max="32767" attributes="0"/>
-                      <Component id="labelPassword" alignment="1" max="32767" attributes="0"/>
-                      <Component id="labelIdNumber" alignment="1" max="32767" attributes="0"/>
-                      <Component id="actionLogin" alignment="0" pref="177" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="idNumber" max="32767" attributes="0"/>
+                  <Component id="labelPassword" alignment="1" max="32767" attributes="0"/>
+                  <Component id="labelIdNumber" alignment="1" max="32767" attributes="0"/>
+                  <Component id="actionLogin" alignment="0" pref="177" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="159" max="32767" attributes="0"/>
           </Group>

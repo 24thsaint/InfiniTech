@@ -11,34 +11,27 @@
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-package Utility;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+package Enumerations;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
-public class ObjectParser {
+public enum LogType {
 
-    public static final List<String> parseDelimitedStringToList(String sizes, String delimiter) {
-        List<String> response = new ArrayList<>();
-        Scanner scn = new Scanner(sizes);
-        scn.useDelimiter(delimiter);
-        while (scn.hasNext()) {
-            response.add(scn.next());
+    NORMAL, LOGIN, LOGOUT;
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case NORMAL:
+                return "Normal";
+            case LOGIN:
+                return "Login";
+            case LOGOUT:
+                return "Logout";
         }
-        return response;
+        return "hahahaha";
     }
 
-    public static final String parseListToDelimiter(List<String> string, String delimiter) {
-        StringBuilder sb = new StringBuilder();
-        for (String s : string) {
-            sb.append(s);
-            sb.append(delimiter);
-        }
-        return sb.toString();
-    }
 }

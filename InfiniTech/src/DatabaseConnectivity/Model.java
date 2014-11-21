@@ -11,12 +11,9 @@
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-package Controllers;
+package DatabaseConnectivity;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 /**
  *
@@ -24,7 +21,7 @@ import javax.persistence.Query;
  */
 public class Model {
 
-    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("InfiniTechPU");
+    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("Engineering_Record_SystemPU");
     private static EntityManager em;
 
     public static EntityManagerFactory getEMF() {
@@ -50,7 +47,7 @@ public class Model {
         em.close();
     }
 
-    public void delete() {        
+    public void delete() {
         em = getEntityManager();
         em.getTransaction().begin();
         em.remove(this);
@@ -58,4 +55,11 @@ public class Model {
         em.close();
     }
     
+    public void update() {
+        em = getEntityManager();
+        em.getTransaction().begin();
+        em.merge(this);
+        em.getTransaction().commit();
+        em.close();
+    }
 }

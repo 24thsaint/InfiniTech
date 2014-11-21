@@ -13,8 +13,12 @@
  */
 package Objects;
 
+import DatabaseConnectivity.Finder;
 import java.io.Serializable;
-import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
 
 /**
  *
@@ -23,8 +27,22 @@ import javax.persistence.Entity;
 @Entity
 public class Council extends Student implements Serializable {
 
-    private static final long serialVersionUID = 1L;        
     private String password;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Log> logs = new ArrayList<>();
+    private final static Finder<Council> finder = new Finder<>("Council");
+
+    public static Finder<Council> getCouncilFinder() {
+        return finder;
+    }
+
+    public List<Log> getLogs() {
+        return logs;
+    }
+
+    public void addLog(Log log) {
+        this.logs.add(log);
+    }
 
     public String getPassword() {
         return password;
@@ -33,5 +51,4 @@ public class Council extends Student implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

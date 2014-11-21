@@ -1,4 +1,6 @@
-package Controllers;
+package InterfaceClasses;
+
+
 
 /*
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
@@ -26,7 +28,9 @@ public interface SearchBehavior<T> {
 
     public List<T> findAll();
 
-    public T findOneRecord(Long id);
+    public T findRecordById(Long id);
+    
+    public T findRecordByField(String field, String key);
 
     public int getRecordCount();
 

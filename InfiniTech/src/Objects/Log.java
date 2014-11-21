@@ -13,6 +13,7 @@
  */
 package Objects;
 
+import Enumerations.LogType;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -28,9 +29,12 @@ public class Log implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date logDate;
     private String description;
+    @Enumerated(EnumType.STRING)
+    private LogType logType;
 
     public Date getLogDate() {
         return logDate;
@@ -47,6 +51,14 @@ public class Log implements Serializable {
     public void setDescription(String description) {
         this.logDate = new Date();
         this.description = description;
+    }
+
+    public LogType getLogType() {
+        return logType;
+    }
+
+    public void setLogType(LogType logType) {
+        this.logType = logType;
     }
 
     public Long getId() {
