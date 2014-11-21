@@ -141,10 +141,11 @@ public class LoginInterface extends javax.swing.JFrame {
             Log log = new Log();
             log.setLogType(LogType.LOGIN);
             log.setLogDate(new Date());
-            log.setDescription("Council " + council.getFirstName() + " has logged in.");
+            log.setDescription(council.getFirstName() + " has logged in.");
             council.addLog(log);
             
             council.update();
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null,
                     "Invalid ID/password!",
