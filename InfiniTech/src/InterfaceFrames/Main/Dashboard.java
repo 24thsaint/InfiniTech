@@ -13,9 +13,12 @@
  */
 package InterfaceFrames.Main;
 
+import Enumerations.LogType;
 import InterfaceFrames.LoginSystem.RegistrationInterface;
 import InterfaceFrames.Tools.LogInterface;
 import Objects.Council;
+import Objects.Log;
+import java.util.Date;
 
 /**
  *
@@ -64,6 +67,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -138,6 +144,11 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         jButton5.setText("Logout");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,6 +239,23 @@ public class Dashboard extends javax.swing.JFrame {
         registrationInterface.setVisible(true);
     }//GEN-LAST:event_registerNewStudentActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        logout();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        logout();
+    }//GEN-LAST:event_formWindowClosed
+
+    
+    
+    public void logout() {
+        Log log = new Log();
+        log.setLogType(LogType.LOGOUT);
+        log.setLogDate(new Date());
+        log.setDescription(council.getFirstName() + " has logged out.");
+        council.getLogs().add(log);
+    }    
     /**
      * @param args the command line arguments
      */
