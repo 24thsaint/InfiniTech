@@ -38,7 +38,7 @@ public class Student extends Model implements Serializable {
     private double payment;
     private String email;
     private String contact;
-    private boolean isCoordinator;
+    private boolean isCoordinator;    
     @OneToOne(cascade = CascadeType.ALL)
     private Shirt shirt;
     @Enumerated(EnumType.STRING)
@@ -49,7 +49,7 @@ public class Student extends Model implements Serializable {
     private Gender gender;
     
     @Transient
-    private static final Finder<Student> finder = new Finder<>("Student");
+    private static final Finder<Student> finder = new Finder<>(Student.class.getSimpleName());
 
     public String getLastName() {
         return lastName;

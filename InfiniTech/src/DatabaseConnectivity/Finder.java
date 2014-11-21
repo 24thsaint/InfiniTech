@@ -13,7 +13,7 @@
  */
 package DatabaseConnectivity;
 
-import InterfaceClasses.SearchBehavior;
+import Classes.Interfaces.SearchBehavior;
 import Objects.Student;
 import java.util.List;
 import javax.persistence.*;
@@ -25,8 +25,7 @@ import javax.persistence.criteria.Root;
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
 public class Finder<T> implements SearchBehavior<T> {
-
-    private EntityManager em;
+    
     private String className;
 
     public Finder(String className) {
@@ -34,31 +33,39 @@ public class Finder<T> implements SearchBehavior<T> {
     }
 
     @Override
-    public List<T> findAll() {
-        em = Model.getEntityManager();
+    public List<T> findAll() {        
+        EntityManager em = Model.getEntityManager();
         Query q = em.createQuery("SELECT o FROM " + this.className + " o");
         return (List<T>) q.getResultList();
     }
 
     @Override
-    public T findRecordById(Long id) {
-        em = Model.getEntityManager();
+    public T findRecordById(Long id) {        
+        EntityManager em = Model.getEntityManager();
         Query q = em.createQuery("SELECT o FROM " + this.className + " o WHERE id LIKE :id");
-        q.setParameter("id", id);
+        q.setParameter("id", id);        
         return (T) q.getSingleResult();
     }
 
     @Override
-    public T findRecordByField(String field, String key) {
-        em = Model.getEntityManager();
+    public T findRecordByField(String field, String key) {   
+        EntityManager em = Model.getEntityManager();
         Query q = em.createQuery("SELECT o FROM " + this.className + " o WHERE " + field + " LIKE :key");
         q.setParameter("key", "%" + key + "%");
         return (T) q.getSingleResult();
     }
+        
+    @Override
+    public List<T> findAllRecordsByField(String field, String key) {   
+        EntityManager em = Model.getEntityManager();
+        Query q = em.createQuery("SELECT o FROM " + this.className + " o WHERE " + field + " LIKE :key");
+        q.setParameter("key", "%" + key + "%");
+        return (List<T>) q.getResultList();
+    }
 
     @Override
     public int getRecordCount() {
-        em = Model.getEntityManager();
+        EntityManager em = Model.getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             Root<Student> rt = cq.from(Student.class);

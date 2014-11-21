@@ -1,4 +1,4 @@
-package InterfaceClasses;
+package Classes.Interfaces;
 
 
 
@@ -31,6 +31,8 @@ public interface SearchBehavior<T> {
     public T findRecordById(Long id);
     
     public T findRecordByField(String field, String key);
+    
+    public List<T> findAllRecordsByField(String field, String key);
 
     public int getRecordCount();
 

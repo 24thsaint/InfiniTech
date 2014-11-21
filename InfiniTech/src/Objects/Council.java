@@ -30,7 +30,7 @@ public class Council extends Student implements Serializable {
     private String password;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Log> logs = new ArrayList<>();
-    private final static Finder<Council> finder = new Finder<>("Council");
+    private final static Finder<Council> finder = new Finder<>(Council.class.getSimpleName());
 
     public static Finder<Council> getCouncilFinder() {
         return finder;

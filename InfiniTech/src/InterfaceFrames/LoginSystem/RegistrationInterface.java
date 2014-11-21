@@ -7,8 +7,14 @@ package InterfaceFrames.LoginSystem;
 
 import Enumerations.*;
 import Objects.Council;
+import Objects.Event;
+import Objects.Log;
 import Objects.Shirt;
 import Objects.Student;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,7 +71,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
         actionRegister = new javax.swing.JButton();
         actionCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -243,6 +249,12 @@ public class RegistrationInterface extends javax.swing.JFrame {
 
     private void actionRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionRegisterActionPerformed
         String id = idNumber.getText().replaceAll("-", "");
+        Shirt shirt = new Shirt();
+            shirt.setClaimed(false);
+            shirt.setShirtSize(
+                    customSize.isEnabled() ? customSize.getText()
+                            : shirtSize.getSelectedItem().toString()
+            );
 
         if (godAccountActive) {
             Council council = new Council();
@@ -253,12 +265,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
             council.setDepartment(Department.values()[department.getSelectedIndex()]);
             council.setGender(Gender.values()[gender.getSelectedIndex()]);
             council.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
-            Shirt shirt = new Shirt();
-            shirt.setClaimed(false);
-            shirt.setShirtSize(
-                    customSize.isEnabled() ? customSize.getText()
-                            : shirtSize.getSelectedItem().toString()
-            );
+            
             council.setShirt(shirt);
             council.setInterest(interests.getText().toUpperCase());
             council.setEmail(email.getText());
@@ -272,20 +279,49 @@ public class RegistrationInterface extends javax.swing.JFrame {
             student.setLastName(lastName.getText());
             student.setDepartment(Department.values()[department.getSelectedIndex()]);
             student.setGender(Gender.values()[gender.getSelectedIndex()]);
-            student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
-            Shirt shirt = new Shirt();
-            shirt.setClaimed(false);
-            shirt.setShirtSize(
-                    customSize.isEnabled() ? customSize.getText()
-                            : shirtSize.getSelectedItem().toString()
-            );
+            student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);            
             student.setShirt(shirt);
             student.setInterest(interests.getText().toUpperCase());
             student.setEmail(email.getText());
             student.setContact(contact.getText());
             student.setPayment(Double.parseDouble(payment.getText()));
+
             student.save();
+            
+            Log log = new Log();
+            log.setLogDate(new Date());
+            log.setLogType(LogType.REGISTRATION);
+            log.setDescription(idNumber.getText() + " has been registered by " + getCouncil().getFirstName());
+            council.addLog(log);
+            council.update();
         }
+
+        Student student = Student.getStudentFinder().findRecordById(Long.parseLong(id));
+        List<String> interestList = Arrays.asList(interests.getText().split("\n"));
+
+        List<Event> events = Event.getFinder().findAll();
+
+        for (Event event : events) {
+            for (Student s2 : event.getStudents()) {
+                System.out.println(event.getEventName() + " " + s2.getFirstName());
+            }
+        }
+
+        for (Event event : events) {
+            for (String i : interestList) {
+                if (event.categorizeStudentByKeyword(student, i)) {
+                    try {
+                        event.update();
+                    } catch (Exception e) {
+                        System.out.println("Student already exists for event!");
+                    }
+                    break;
+                }
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Registration successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
     }//GEN-LAST:event_actionRegisterActionPerformed
 
     private void shirtSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shirtSizeActionPerformed
@@ -351,7 +387,16 @@ public class RegistrationInterface extends javax.swing.JFrame {
         godAccountActive = true;
     }
 
+    public Council getCouncil() {
+        return council;
+    }
+
+    public void setCouncil(Council council) {
+        this.council = council;
+    }
+
     private boolean godAccountActive = false;
+    private Council council;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actionCancel;
     private javax.swing.JButton actionRegister;

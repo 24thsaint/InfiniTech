@@ -19,7 +19,7 @@ package Enumerations;
  */
 public enum LogType {
 
-    NORMAL, LOGIN, LOGOUT;
+    NORMAL, LOGIN, LOGOUT, REGISTRATION;
 
     @Override
     public String toString() {
@@ -30,6 +30,8 @@ public enum LogType {
                 return "Login";
             case LOGOUT:
                 return "Logout";
+            case REGISTRATION:
+                return "Register Transaction";
         }
         return "hahahaha";
     }

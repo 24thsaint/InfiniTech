@@ -24,7 +24,7 @@ import javax.persistence.Id;
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
 @Entity
-public class Shirt implements Serializable {
+public class Shirt implements Serializable {    
 
     private static final long serialVersionUID = 1L;
     @Id

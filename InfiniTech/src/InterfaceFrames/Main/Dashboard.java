@@ -13,12 +13,18 @@
  */
 package InterfaceFrames.Main;
 
+import DatabaseConnectivity.Model;
 import Enumerations.LogType;
+import InterfaceFrames.LoginSystem.LoginInterface;
 import InterfaceFrames.LoginSystem.RegistrationInterface;
 import InterfaceFrames.Tools.LogInterface;
 import Objects.Council;
+import Objects.Event;
 import Objects.Log;
+import Objects.Student;
 import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,30 +48,37 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        tabs = new javax.swing.JTabbedPane();
+        dashboardTab = new javax.swing.JPanel();
         coucilDetailPane = new javax.swing.JPanel();
         labelName = new javax.swing.JLabel();
-        infoName = new javax.swing.JLabel();
+        infoName = new javax.swing.JTextField();
         labelDepartment = new javax.swing.JLabel();
-        infoDepartment = new javax.swing.JLabel();
+        infoDepartment = new javax.swing.JTextField();
         labelYearLevel = new javax.swing.JLabel();
-        infoYearLevel = new javax.swing.JLabel();
+        infoYearLevel = new javax.swing.JTextField();
         actionsPane = new javax.swing.JPanel();
         registerNewStudent = new javax.swing.JButton();
         registerNewCouncil = new javax.swing.JButton();
         borrowEquipment = new javax.swing.JButton();
         viewEquipment = new javax.swing.JButton();
         announcementPane = new javax.swing.JPanel();
+        announcementScroller = new javax.swing.JScrollPane();
+        announcement = new javax.swing.JTextArea();
+        logout = new javax.swing.JButton();
+        events = new javax.swing.JPanel();
+        filterEventPane = new javax.swing.JPanel();
+        labelEvent = new javax.swing.JLabel();
+        eventsSelection = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton5 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        tools = new javax.swing.JMenuBar();
+        showLog = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 500));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -80,20 +93,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         labelName.setText("Name");
         coucilDetailPane.add(labelName);
-
-        infoName.setText("student name");
         coucilDetailPane.add(infoName);
 
         labelDepartment.setText("Department");
         coucilDetailPane.add(labelDepartment);
-
-        infoDepartment.setText("department");
         coucilDetailPane.add(infoDepartment);
 
         labelYearLevel.setText("Year Level");
         coucilDetailPane.add(labelYearLevel);
-
-        infoYearLevel.setText("year level");
         coucilDetailPane.add(infoYearLevel);
 
         actionsPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -123,72 +130,123 @@ public class Dashboard extends javax.swing.JFrame {
 
         announcementPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Announcements"));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        announcement.setColumns(20);
+        announcement.setRows(5);
+        announcementScroller.setViewportView(announcement);
 
         javax.swing.GroupLayout announcementPaneLayout = new javax.swing.GroupLayout(announcementPane);
         announcementPane.setLayout(announcementPaneLayout);
         announcementPaneLayout.setHorizontalGroup(
             announcementPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, announcementPaneLayout.createSequentialGroup()
+            .addGroup(announcementPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addComponent(announcementScroller)
                 .addContainerGap())
         );
         announcementPaneLayout.setVerticalGroup(
             announcementPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, announcementPaneLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(announcementScroller)
         );
 
-        jButton5.setText("Logout");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                logoutActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout dashboardTabLayout = new javax.swing.GroupLayout(dashboardTab);
+        dashboardTab.setLayout(dashboardTabLayout);
+        dashboardTabLayout.setHorizontalGroup(
+            dashboardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(coucilDetailPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(dashboardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dashboardTabLayout.createSequentialGroup()
+                        .addComponent(coucilDetailPane, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(announcementPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(announcementPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logout))
+                    .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        dashboardTabLayout.setVerticalGroup(
+            dashboardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(coucilDetailPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(announcementPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
+                .addGroup(dashboardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dashboardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(coucilDetailPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(announcementPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Dashboard", jPanel1);
+        tabs.addTab("Dashboard", dashboardTab);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        labelEvent.setText("Event");
+        filterEventPane.add(labelEvent);
 
-        jMenu2.setText("Tools");
+        eventsSelection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventsSelectionActionPerformed(evt);
+            }
+        });
+        filterEventPane.add(eventsSelection);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Student ID", "Student Name", "Department", "Year", "Interest"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(80);
+        }
+
+        jLabel1.setText("Potential Representatives");
+
+        javax.swing.GroupLayout eventsLayout = new javax.swing.GroupLayout(events);
+        events.setLayout(eventsLayout);
+        eventsLayout.setHorizontalGroup(
+            eventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(eventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                    .addGroup(eventsLayout.createSequentialGroup()
+                        .addGroup(eventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filterEventPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        eventsLayout.setVerticalGroup(
+            eventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(filterEventPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabs.addTab("Events", events);
+
+        showLog.setText("Tools");
 
         jMenuItem1.setText("Show Logs");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -196,30 +254,38 @@ public class Dashboard extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        showLog.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu2);
+        tools.add(showLog);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(tools);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         infoName.setText("     " + getCouncil().getFirstName() + " " + getCouncil().getLastName());
         infoDepartment.setText("     " + getCouncil().getDepartment().toString());
         infoYearLevel.setText("     " + getCouncil().getYearLevel().toString());
+
+        List<Event> events = Event.getFinder().findAll();
+        for (Event e : events) {
+            eventsSelection.addItem(e.getEventName());
+        }
+
+        eventsSelection.setSelectedIndex(0);
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -236,26 +302,69 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void registerNewStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewStudentActionPerformed
         RegistrationInterface registrationInterface = new RegistrationInterface();
+        registrationInterface.setCouncil(getCouncil());
         registrationInterface.setVisible(true);
     }//GEN-LAST:event_registerNewStudentActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         logout();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_logoutActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         logout();
     }//GEN-LAST:event_formWindowClosed
 
-    
-    
+    private void eventsSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventsSelectionActionPerformed
+
+        jTable1 = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Student ID", "Student Name", "Department", "Year", "Interest"
+                }
+        ));
+
+        jScrollPane1.setViewportView(jTable1);
+
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(80);
+        }
+
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+
+        Event event = Event.getFinder().findRecordByField("eventName", (String) eventsSelection.getSelectedItem());
+        List<Student> reps = event.getStudents();
+
+        for (Student rep : reps) {
+            String data1 = String.valueOf(rep.getId());
+            String data2 = rep.getFirstName() + " " + rep.getLastName();
+            String data3 = rep.getDepartment().toString();
+            String data4 = rep.getYearLevel().toString();
+            String data5 = rep.getInterest().replaceAll("\n", ",");
+
+            String[] data = {data1, data2, data3, data4, data5};
+            dtm.addRow(data);
+        }
+
+    }//GEN-LAST:event_eventsSelectionActionPerformed
+
     public void logout() {
         Log log = new Log();
         log.setLogType(LogType.LOGOUT);
         log.setLogDate(new Date());
         log.setDescription(council.getFirstName() + " has logged out.");
         council.getLogs().add(log);
-    }    
+        council.update();
+        this.dispose();
+        new LoginInterface().setVisible(true);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -302,26 +411,32 @@ public class Dashboard extends javax.swing.JFrame {
     private static Council council;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actionsPane;
+    private javax.swing.JTextArea announcement;
     private javax.swing.JPanel announcementPane;
+    private javax.swing.JScrollPane announcementScroller;
     private javax.swing.JButton borrowEquipment;
     private javax.swing.JPanel coucilDetailPane;
-    private javax.swing.JLabel infoDepartment;
-    private javax.swing.JLabel infoName;
-    private javax.swing.JLabel infoYearLevel;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel dashboardTab;
+    private javax.swing.JPanel events;
+    private javax.swing.JComboBox eventsSelection;
+    private javax.swing.JPanel filterEventPane;
+    private javax.swing.JTextField infoDepartment;
+    private javax.swing.JTextField infoName;
+    private javax.swing.JTextField infoYearLevel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelDepartment;
+    private javax.swing.JLabel labelEvent;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelYearLevel;
+    private javax.swing.JButton logout;
     private javax.swing.JButton registerNewCouncil;
     private javax.swing.JButton registerNewStudent;
+    private javax.swing.JMenu showLog;
+    private javax.swing.JTabbedPane tabs;
+    private javax.swing.JMenuBar tools;
     private javax.swing.JButton viewEquipment;
     // End of variables declaration//GEN-END:variables
 }
