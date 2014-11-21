@@ -13,6 +13,7 @@
  */
 package InterfaceFrames.Main;
 
+import InterfaceFrames.LoginSystem.RegistrationInterface;
 import InterfaceFrames.Tools.LogInterface;
 import Objects.Council;
 
@@ -40,13 +41,22 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        coucilDetailPane = new javax.swing.JPanel();
         labelName = new javax.swing.JLabel();
         infoName = new javax.swing.JLabel();
         labelDepartment = new javax.swing.JLabel();
         infoDepartment = new javax.swing.JLabel();
         labelYearLevel = new javax.swing.JLabel();
         infoYearLevel = new javax.swing.JLabel();
+        actionsPane = new javax.swing.JPanel();
+        registerNewStudent = new javax.swing.JButton();
+        registerNewCouncil = new javax.swing.JButton();
+        borrowEquipment = new javax.swing.JButton();
+        viewEquipment = new javax.swing.JButton();
+        announcementPane = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -59,26 +69,75 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Council"));
-        jPanel2.setLayout(new java.awt.GridLayout(0, 1));
+        coucilDetailPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Council"));
+        coucilDetailPane.setLayout(new java.awt.GridLayout(0, 1));
 
         labelName.setText("Name");
-        jPanel2.add(labelName);
+        coucilDetailPane.add(labelName);
 
         infoName.setText("student name");
-        jPanel2.add(infoName);
+        coucilDetailPane.add(infoName);
 
         labelDepartment.setText("Department");
-        jPanel2.add(labelDepartment);
+        coucilDetailPane.add(labelDepartment);
 
         infoDepartment.setText("department");
-        jPanel2.add(infoDepartment);
+        coucilDetailPane.add(infoDepartment);
 
         labelYearLevel.setText("Year Level");
-        jPanel2.add(labelYearLevel);
+        coucilDetailPane.add(labelYearLevel);
 
         infoYearLevel.setText("year level");
-        jPanel2.add(infoYearLevel);
+        coucilDetailPane.add(infoYearLevel);
+
+        actionsPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        actionsPane.setLayout(new java.awt.GridLayout(0, 2));
+
+        registerNewStudent.setText("Register New Student");
+        registerNewStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerNewStudentActionPerformed(evt);
+            }
+        });
+        actionsPane.add(registerNewStudent);
+
+        registerNewCouncil.setText("Register New Council Member");
+        registerNewCouncil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerNewCouncilActionPerformed(evt);
+            }
+        });
+        actionsPane.add(registerNewCouncil);
+
+        borrowEquipment.setText("Borrow Equipment");
+        actionsPane.add(borrowEquipment);
+
+        viewEquipment.setText("View Equipments");
+        actionsPane.add(viewEquipment);
+
+        announcementPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Announcements"));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout announcementPaneLayout = new javax.swing.GroupLayout(announcementPane);
+        announcementPane.setLayout(announcementPaneLayout);
+        announcementPaneLayout.setHorizontalGroup(
+            announcementPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, announcementPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        announcementPaneLayout.setVerticalGroup(
+            announcementPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, announcementPaneLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jButton5.setText("Logout");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,15 +145,31 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(774, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(coucilDetailPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(announcementPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(coucilDetailPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(announcementPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Dashboard", jPanel1);
@@ -120,7 +195,7 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,6 +216,17 @@ public class Dashboard extends javax.swing.JFrame {
         logInterface.setCouncil(council);
         logInterface.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void registerNewCouncilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewCouncilActionPerformed
+        RegistrationInterface registrationInterface = new RegistrationInterface();
+        registrationInterface.activateGodAccount();
+        registrationInterface.setVisible(true);
+    }//GEN-LAST:event_registerNewCouncilActionPerformed
+
+    private void registerNewStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewStudentActionPerformed
+        RegistrationInterface registrationInterface = new RegistrationInterface();
+        registrationInterface.setVisible(true);
+    }//GEN-LAST:event_registerNewStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,18 +273,27 @@ public class Dashboard extends javax.swing.JFrame {
 
     private static Council council;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel actionsPane;
+    private javax.swing.JPanel announcementPane;
+    private javax.swing.JButton borrowEquipment;
+    private javax.swing.JPanel coucilDetailPane;
     private javax.swing.JLabel infoDepartment;
     private javax.swing.JLabel infoName;
     private javax.swing.JLabel infoYearLevel;
+    private javax.swing.JButton jButton5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelDepartment;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelYearLevel;
+    private javax.swing.JButton registerNewCouncil;
+    private javax.swing.JButton registerNewStudent;
+    private javax.swing.JButton viewEquipment;
     // End of variables declaration//GEN-END:variables
 }
