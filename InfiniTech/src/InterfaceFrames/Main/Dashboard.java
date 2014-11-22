@@ -17,6 +17,7 @@ import DatabaseConnectivity.Model;
 import Enumerations.LogType;
 import InterfaceFrames.LoginSystem.LoginInterface;
 import InterfaceFrames.LoginSystem.RegistrationInterface;
+import InterfaceFrames.Tools.EventInterface;
 import InterfaceFrames.Tools.LogInterface;
 import Objects.Council;
 import Objects.Event;
@@ -76,6 +77,7 @@ public class Dashboard extends javax.swing.JFrame {
         tools = new javax.swing.JMenuBar();
         showLog = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 500));
@@ -256,6 +258,14 @@ public class Dashboard extends javax.swing.JFrame {
         });
         showLog.add(jMenuItem1);
 
+        jMenuItem2.setText("Customize Events");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        showLog.add(jMenuItem2);
+
         tools.add(showLog);
 
         setJMenuBar(tools);
@@ -354,6 +364,11 @@ public class Dashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_eventsSelectionActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        EventInterface eventInterface = new EventInterface();
+        eventInterface.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public void logout() {
         Log log = new Log();
         log.setLogType(LogType.LOGOUT);
@@ -425,6 +440,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField infoYearLevel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelDepartment;

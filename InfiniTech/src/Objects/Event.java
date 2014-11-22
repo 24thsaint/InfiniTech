@@ -13,6 +13,7 @@
  */
 package Objects;
 
+import Classes.Interfaces.exceptions.NonexistentEntityException;
 import DatabaseConnectivity.Finder;
 import DatabaseConnectivity.Model;
 import java.io.Serializable;
@@ -35,7 +36,7 @@ public class Event extends Model implements Serializable {
     private String eventName;
     @ElementCollection(targetClass = String.class)
     private List<String> keywords = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>();
     @Transient
     private static final Finder<Event> finder = new Finder<>(Event.class.getSimpleName());
@@ -43,15 +44,39 @@ public class Event extends Model implements Serializable {
     public static Finder<Event> getFinder() {
         return finder;
     }
-
-    public boolean categorizeStudentByKeyword(Student student, String keyword) {
-        for (String s : keywords) {
-            if (s.equalsIgnoreCase(keyword)) {                
-                this.students.add(student);
-                return true;
+    
+    public static void delete(Event e) {
+        EntityManager em = null;
+        try {
+            em = Model.getEntityManager();
+            em.getTransaction().begin();
+            Event event = null;
+            try {
+                event = em.getReference(Event.class, e.getId());
+                event.getId();
+            } catch (EntityNotFoundException enfe) {
+                System.out.println(enfe.getMessage());
+            }
+            em.remove(event);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
             }
         }
-        return false;
+    }
+
+    public void categorizeStudentByKeyword(Student student, String keyword) {
+        for (String s : keywords) {
+            if (s.equalsIgnoreCase(keyword)) {
+                this.students.add(student);
+                return;
+            }
+        }
+    }
+
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
     }
 
     public String getEventName() {

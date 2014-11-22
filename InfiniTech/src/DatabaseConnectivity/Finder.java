@@ -14,11 +14,8 @@
 package DatabaseConnectivity;
 
 import Classes.Interfaces.SearchBehavior;
-import Objects.Student;
 import java.util.List;
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
@@ -61,20 +58,6 @@ public class Finder<T> implements SearchBehavior<T> {
         Query q = em.createQuery("SELECT o FROM " + this.className + " o WHERE " + field + " LIKE :key");
         q.setParameter("key", "%" + key + "%");
         return (List<T>) q.getResultList();
-    }
-
-    @Override
-    public int getRecordCount() {
-        EntityManager em = Model.getEntityManager();
-        try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Student> rt = cq.from(Student.class);
-            cq.select(em.getCriteriaBuilder().count(rt));
-            Query q = em.createQuery(cq);
-            return ((Long) q.getSingleResult()).intValue();
-        } finally {
-            em.close();
-        }
     }
 
 }

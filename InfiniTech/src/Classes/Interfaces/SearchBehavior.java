@@ -1,7 +1,5 @@
 package Classes.Interfaces;
 
-
-
 /*
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  *  |      CENTRAL PHILIPPINE UNIVERSITY                   |
@@ -15,8 +13,6 @@ package Classes.Interfaces;
  *  |               ~~~"CODE the FUTURE"~~~                |
  *  ==++++++++++++++++++++++++++++++++++++++++++++++++++++==
  */
-
-
 import java.util.List;
 
 /**
@@ -29,11 +25,9 @@ public interface SearchBehavior<T> {
     public List<T> findAll();
 
     public T findRecordById(Long id);
-    
-    public T findRecordByField(String field, String key);
-    
-    public List<T> findAllRecordsByField(String field, String key);
 
-    public int getRecordCount();
+    public T findRecordByField(String field, String key);
+
+    public List<T> findAllRecordsByField(String field, String key);
 
 }

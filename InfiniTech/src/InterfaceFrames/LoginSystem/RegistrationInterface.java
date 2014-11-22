@@ -249,29 +249,33 @@ public class RegistrationInterface extends javax.swing.JFrame {
 
     private void actionRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionRegisterActionPerformed
         String id = idNumber.getText().replaceAll("-", "");
+
         Shirt shirt = new Shirt();
-            shirt.setClaimed(false);
-            shirt.setShirtSize(
-                    customSize.isEnabled() ? customSize.getText()
-                            : shirtSize.getSelectedItem().toString()
-            );
+        shirt.setClaimed(false);
+        shirt.setShirtSize(
+                customSize.isVisible() ? customSize.getText()
+                        : shirtSize.getSelectedItem().toString()
+        );
+
+        System.out.println(shirt.getShirtSize());
+        System.out.println(shirt.hasClaimed());
 
         if (godAccountActive) {
-            Council council = new Council();
-            council.setId(Long.parseLong(id));
-            council.setFirstName(firstName.getText());
-            council.setLastName(lastName.getText());
-            council.setPassword(String.valueOf(password.getPassword()));
-            council.setDepartment(Department.values()[department.getSelectedIndex()]);
-            council.setGender(Gender.values()[gender.getSelectedIndex()]);
-            council.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
-            
-            council.setShirt(shirt);
-            council.setInterest(interests.getText().toUpperCase());
-            council.setEmail(email.getText());
-            council.setContact(contact.getText());
-            council.setPayment(Double.parseDouble(payment.getText()));
-            council.save();
+            Council regCouncil = new Council();
+            regCouncil.setId(Long.parseLong(id));
+            regCouncil.setFirstName(firstName.getText());
+            regCouncil.setLastName(lastName.getText());
+            regCouncil.setPassword(String.valueOf(password.getPassword()));
+            regCouncil.setDepartment(Department.values()[department.getSelectedIndex()]);
+            regCouncil.setGender(Gender.values()[gender.getSelectedIndex()]);
+            regCouncil.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
+
+            regCouncil.setShirt(shirt);
+            regCouncil.setInterest(interests.getText().toUpperCase());
+            regCouncil.setEmail(email.getText());
+            regCouncil.setContact(contact.getText());
+            regCouncil.setPayment(Double.parseDouble(payment.getText()));
+            regCouncil.save();
         } else {
             Student student = new Student();
             student.setId(Long.parseLong(id));
@@ -279,7 +283,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
             student.setLastName(lastName.getText());
             student.setDepartment(Department.values()[department.getSelectedIndex()]);
             student.setGender(Gender.values()[gender.getSelectedIndex()]);
-            student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);            
+            student.setYearLevel(YearLevel.values()[yearLevel.getSelectedIndex()]);
             student.setShirt(shirt);
             student.setInterest(interests.getText().toUpperCase());
             student.setEmail(email.getText());
@@ -287,7 +291,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
             student.setPayment(Double.parseDouble(payment.getText()));
 
             student.save();
-            
+
             Log log = new Log();
             log.setLogDate(new Date());
             log.setLogType(LogType.REGISTRATION);
@@ -309,18 +313,18 @@ public class RegistrationInterface extends javax.swing.JFrame {
 
         for (Event event : events) {
             for (String i : interestList) {
-                if (event.categorizeStudentByKeyword(student, i)) {
-                    try {
-                        event.update();
-                    } catch (Exception e) {
-                        System.out.println("Student already exists for event!");
-                    }
-                    break;
+                event.categorizeStudentByKeyword(student, i);
+                try {
+                    event.update();
+                } catch (Exception e) {
+                    System.out.println("Student already exists for event!");
                 }
+                break;
             }
         }
+        JOptionPane.showMessageDialog(
+                null, "Registration successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
-        JOptionPane.showMessageDialog(null, "Registration successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_actionRegisterActionPerformed
 

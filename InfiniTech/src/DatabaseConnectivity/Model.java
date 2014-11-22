@@ -49,17 +49,6 @@ public class Model {
 
     }
 
-    public void delete() {
-        try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            em.remove(this);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-
     public void update() {
         try {
             em = getEntityManager();

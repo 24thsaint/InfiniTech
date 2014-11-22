@@ -73,17 +73,20 @@ public class StudentTest {
 //            }
 //        }
         Event event = new Event();
-        event.setEventName("COMPUTER QUIZ BEE");
-        event.addKeyword("COMPUTER");
-        event.addKeyword("INTERNET");
-        event.addKeyword("PROGRAMMING");
-        event.addKeyword("CODING");        
-//        event.setEventName("CULTURAL SINGING");
-//        event.addKeyword("KUNDIMAN");
-//        event.addKeyword("SINGING");
-//        event.addKeyword("POP SONG");
-//        event.addKeyword("SING");        
-//        event.addKeyword("CHORALE");
+//        event.setEventName("COMPUTER QUIZ BEE");
+//        event.addKeyword("COMPUTER");
+//        event.addKeyword("INTERNET");
+//        event.addKeyword("PROGRAMMING");
+//        event.addKeyword("CODING");        
+        event.setEventName("CULTURAL SINGING");
+        event.addKeyword("KUNDIMAN");
+        event.addKeyword("SINGING");
+        event.addKeyword("POP SONG");
+        event.addKeyword("SING");        
+        event.addKeyword("CHORALE");
         event.save();
+        
+//        Student student = Student.getStudentFinder().findRecordByField("firstName", "Daryl");
+//        System.out.println(student.getShirt().getShirtSize());
     }
 }

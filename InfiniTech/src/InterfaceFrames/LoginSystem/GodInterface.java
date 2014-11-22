@@ -13,6 +13,8 @@
  */
 package InterfaceFrames.LoginSystem;
 
+import InterfaceFrames.Tools.EventInterface;
+
 
 /**
  *
@@ -81,6 +83,9 @@ public class GodInterface extends javax.swing.JFrame {
         RegistrationInterface ri = new RegistrationInterface();
         ri.activateGodAccount();
         ri.setVisible(true);
+        
+        EventInterface eventInterface = new EventInterface();
+        eventInterface.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
