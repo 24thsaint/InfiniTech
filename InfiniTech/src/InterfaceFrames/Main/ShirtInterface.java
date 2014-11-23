@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfaceFrames.Tools;
+package InterfaceFrames.Main;
 
 import Objects.Student;
 import java.util.ArrayList;
@@ -21,12 +21,15 @@ public class ShirtInterface extends javax.swing.JFrame {
      * Creates new form ShirtInterface
      */
     public ShirtInterface() {
+        students = Student.getStudentFinder().findAll();
         initComponents();
+        dtm = (DefaultTableModel) jtable1.getModel();
 
     }
+
     DefaultTableModel dtm;
 
-    private List<Student> students = new ArrayList<>();
+    private List<Student> students;
 
     public List<Student> getStudents() {
         return students;
@@ -84,21 +87,17 @@ public class ShirtInterface extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2, "card3");
@@ -122,7 +121,7 @@ public class ShirtInterface extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -134,6 +133,11 @@ public class ShirtInterface extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("SEARCH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,24 +163,18 @@ public class ShirtInterface extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        List<Student> registered = new ArrayList<>();
         for (Student student : students) {
-            for (Student registered1 : registered) {
-                String name = student.getFirstName() + " " + student.getLastName();
+            String data1 = String.valueOf(student.getId());
+            String data2 = student.getFirstName() + " " + student.getLastName();
+            String data3 = student.getShirt().getShirtSize();
 
-                if (!name.equalsIgnoreCase(registered1.getFirstName() + " " + student.getLastName())) {
-                    dtm = (DefaultTableModel) jtable1.getModel();
-                    dtm.addRow(new Object[]{name});
-                    registered.add(student);
-                }
-                continue;
-            }
+            String[] data = {data1, data2, data3};
+            dtm.addRow(data);
         }
-
     }//GEN-LAST:event_formWindowOpened
 
     private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
@@ -191,6 +189,10 @@ public class ShirtInterface extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jtable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
     private void notifier(String message, String title, int alertType) {
         JOptionPane.showMessageDialog(null, message, title, alertType);
     }

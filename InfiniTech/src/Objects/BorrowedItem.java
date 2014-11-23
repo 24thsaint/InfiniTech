@@ -13,59 +13,69 @@
  */
 package Objects;
 
-import DatabaseConnectivity.Finder;
 import DatabaseConnectivity.Model;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import java.util.Date;
+import javax.persistence.*;
 
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
  */
 @Entity
-public class Item extends Model implements Serializable {
+public class BorrowedItem extends Model implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String itemName;
-    private int quantity;
-    @Transient
-    private static final Finder<Item> finder = new Finder<>(Item.class.getSimpleName());
+    private Long itemID;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date borrowDate;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date returnDate;
 
-    public void borrowItem() {
-        this.quantity--;
+    public BorrowedItem borrowItem(Item item) {
+        this.itemID = item.getId();
+        this.borrowDate = new Date();
+        this.returnDate = null;
+        item.borrowItem();
+        item.update();
+        return this;
     }
 
     public void returnItem() {
-        this.quantity++;
+        this.returnDate = new Date();
+        Item item = getItem();
+        item.returnItem();
+        item.update();
     }
 
-    public String getItemName() {
-        return itemName;
+    public Item getItem() {
+        try {
+            return Item.getFinder().findRecordById(this.itemID);
+        } catch (NoResultException e) {
+            Item item = new Item();
+            item.setItemName("Item record deleted");
+            item.setQuantity(0);
+            return item;
+        }
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public Date getBorrowDate() {
+        return borrowDate;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public Date getReturnDate() {
+        return returnDate;
     }
 
-    public static Finder<Item> getFinder() {
-        return finder;
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
     }
 
     public Long getId() {
@@ -86,10 +96,10 @@ public class Item extends Model implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Item)) {
+        if (!(object instanceof BorrowedItem)) {
             return false;
         }
-        Item other = (Item) object;
+        BorrowedItem other = (BorrowedItem) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -98,28 +108,7 @@ public class Item extends Model implements Serializable {
 
     @Override
     public String toString() {
-        return "Objects.Item[ id=" + id + " ]";
-    }
-
-    public static void delete(Item e) {
-        EntityManager em = null;
-        try {
-            em = Model.getEntityManager();
-            em.getTransaction().begin();
-            Item item = null;
-            try {
-                item = em.getReference(Item.class, e.getId());
-                item.getId();
-            } catch (EntityNotFoundException enfe) {
-                System.out.println(enfe.getMessage());
-            }
-            em.remove(item);
-            em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
+        return "Objects.BorrowedItem[ id=" + id + " ]";
     }
 
 }

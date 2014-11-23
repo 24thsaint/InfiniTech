@@ -72,21 +72,44 @@ public class StudentTest {
 //                }
 //            }
 //        }
-        Event event = new Event();
+//        Event event = new Event();
 //        event.setEventName("COMPUTER QUIZ BEE");
 //        event.addKeyword("COMPUTER");
 //        event.addKeyword("INTERNET");
 //        event.addKeyword("PROGRAMMING");
 //        event.addKeyword("CODING");        
-        event.setEventName("CULTURAL SINGING");
-        event.addKeyword("KUNDIMAN");
-        event.addKeyword("SINGING");
-        event.addKeyword("POP SONG");
-        event.addKeyword("SING");        
-        event.addKeyword("CHORALE");
-        event.save();
-        
+//        event.setEventName("CULTURAL SINGING");
+//        event.addKeyword("KUNDIMAN");
+//        event.addKeyword("SINGING");
+//        event.addKeyword("POP SONG");
+//        event.addKeyword("SING");        
+//        event.addKeyword("CHORALE");
+//        event.save();
 //        Student student = Student.getStudentFinder().findRecordByField("firstName", "Daryl");
 //        System.out.println(student.getShirt().getShirtSize());
+//        Student student = Student.getStudentFinder().findRecordById(13047966L);
+//        System.out.println(student.getFirstName());
+
+        Item item = new Item();
+        item.setItemName("Frisbee");
+        item.setQuantity(3);
+        item.save();
+//
+//        List<Item> items = Item.getFinder().findAll();
+//        for (Item i : items) {
+//            BorrowedItem borrowedItem = new BorrowedItem();
+//            student.addBorrowedItem(borrowedItem.borrowItem(i, student));
+//            i.update();
+//            student.update();
+//        }
+        
+//        List<BorrowedItem> borrowedItems = student.getBorrowedItems();
+//        for (BorrowedItem b : borrowedItems) {
+//            System.out.println(b.getItem().getItemName());
+//            System.out.println(b.getBorrowDate());
+//            System.out.println(b.getStudent().getFirstName());
+//        }
+        
+        System.out.println("DONE");
     }
 }

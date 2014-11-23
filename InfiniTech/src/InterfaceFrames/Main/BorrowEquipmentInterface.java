@@ -13,6 +13,15 @@
  */
 package InterfaceFrames.Main;
 
+import Objects.BorrowedItem;
+import Objects.Item;
+import Objects.Student;
+import java.util.List;
+import java.util.Objects;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Rave Noren Gidor-Sambo Villavicencio-Arevalo
@@ -23,6 +32,7 @@ public class BorrowEquipmentInterface extends javax.swing.JFrame {
      * Creates new form BorrowEquipmentInterface
      */
     public BorrowEquipmentInterface() {
+        items = Item.getFinder().findAll();
         initComponents();
     }
 
@@ -35,29 +45,153 @@ public class BorrowEquipmentInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        labelStudentID = new javax.swing.JLabel();
+        actionGo = new javax.swing.JButton();
+        studentHistoryPane = new javax.swing.JPanel();
+        studentHistoryScroller = new javax.swing.JScrollPane();
+        studentHistory = new javax.swing.JTable();
+        itemListScroller = new javax.swing.JScrollPane();
+        dlm = new DefaultListModel();
+        itemList = new javax.swing.JList(dlm);
+        labelItemName = new javax.swing.JLabel();
+        labelQuantity = new javax.swing.JLabel();
+        itemName = new javax.swing.JTextField();
+        quantity = new javax.swing.JTextField();
+        actionBorrowItem = new javax.swing.JButton();
+        labelItemID = new javax.swing.JLabel();
+        itemID = new javax.swing.JTextField();
+        labelItemList = new javax.swing.JLabel();
+        itemSearch = new javax.swing.JTextField();
+        labelQuickSearch = new javax.swing.JLabel();
+        idNumber = new javax.swing.JFormattedTextField();
+        labelStudentName = new javax.swing.JLabel();
+        studentName = new javax.swing.JTextField();
+        actionReturnItem = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setText("Borrower's Student ID");
+        labelStudentID.setText("Borrower's Student ID");
 
-        jButton1.setText("GO");
+        actionGo.setText("GO");
+        actionGo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionGoActionPerformed(evt);
+            }
+        });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        studentHistoryPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Student's History of Borrowed Items"));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+        studentHistory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Transaction #", "Item Name", "Borrow Date", "Return Date"
+            }
+        ));
+        studentHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        studentHistoryScroller.setViewportView(studentHistory);
+        if (studentHistory.getColumnModel().getColumnCount() > 0) {
+            studentHistory.getColumnModel().getColumn(0).setMinWidth(100);
+            studentHistory.getColumnModel().getColumn(0).setPreferredWidth(100);
+            studentHistory.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
+
+        javax.swing.GroupLayout studentHistoryPaneLayout = new javax.swing.GroupLayout(studentHistoryPane);
+        studentHistoryPane.setLayout(studentHistoryPaneLayout);
+        studentHistoryPaneLayout.setHorizontalGroup(
+            studentHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentHistoryPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(studentHistoryScroller)
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
+        studentHistoryPaneLayout.setVerticalGroup(
+            studentHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(studentHistoryScroller, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
+
+        itemList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        itemList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                itemListMousePressed(evt);
+            }
+        });
+        itemList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                itemListKeyPressed(evt);
+            }
+        });
+        itemListScroller.setViewportView(itemList);
+
+        labelItemName.setText("Item Name");
+
+        labelQuantity.setText("Quantity left");
+
+        itemName.setEditable(false);
+
+        quantity.setEditable(false);
+
+        actionBorrowItem.setText("Borrow Item");
+        actionBorrowItem.setEnabled(false);
+        actionBorrowItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionBorrowItemActionPerformed(evt);
+            }
+        });
+
+        labelItemID.setText("Item ID");
+
+        itemID.setEditable(false);
+
+        labelItemList.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        labelItemList.setText("Item List");
+
+        itemSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSearchActionPerformed(evt);
+            }
+        });
+        itemSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                itemSearchKeyPressed(evt);
+            }
+        });
+
+        labelQuickSearch.setText("Quick Search:");
+
+        try {
+            idNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        labelStudentName.setText("Student Name");
+
+        studentName.setEditable(false);
+
+        actionReturnItem.setText("Return borrowed item");
+        actionReturnItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionReturnItemActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,13 +200,39 @@ public class BorrowEquipmentInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentHistoryPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelStudentID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(actionGo, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(labelQuickSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(itemSearch))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelItemList, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(itemListScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelItemName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelItemID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelStudentName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(itemName)
+                            .addComponent(quantity)
+                            .addComponent(actionBorrowItem, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(itemID)
+                            .addComponent(studentName))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(actionReturnItem)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -80,16 +240,211 @@ public class BorrowEquipmentInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelStudentID)
+                    .addComponent(actionGo)
+                    .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelItemList, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelQuickSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(studentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelStudentName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelItemID)
+                            .addComponent(itemID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelItemName)
+                            .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelQuantity))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(actionBorrowItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(itemListScroller))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(studentHistoryPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(actionReturnItem)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        for (Item item : items) {
+            dlm.addElement(item.getItemName());
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void itemListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemListMousePressed
+        displayInfo();
+    }//GEN-LAST:event_itemListMousePressed
+
+    private void displayInfo() {
+        Item item = Item.getFinder().findRecordByField("itemName", (String) itemList.getSelectedValue());
+        itemID.setText(String.valueOf(item.getId()));
+        itemName.setText(item.getItemName());
+        quantity.setText(String.valueOf(item.getQuantity()));
+
+    }
+
+    private void itemSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSearchActionPerformed
+        if (!itemList.isSelectionEmpty()) {
+            displayInfo();
+        } else {
+            // do nothing
+        }
+    }//GEN-LAST:event_itemSearchActionPerformed
+
+    private void itemListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemListKeyPressed
+        itemSearch.transferFocus();
+    }//GEN-LAST:event_itemListKeyPressed
+
+    private void itemSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemSearchKeyPressed
+        if (itemSearch.getText().isEmpty()) {
+            itemList.clearSelection();
+        } else {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).getItemName().contains(itemSearch.getText())) {
+                    itemList.setSelectedIndex(i);
+                    return;
+                } else {
+                    itemList.clearSelection();
+                }
+            }
+        }
+    }//GEN-LAST:event_itemSearchKeyPressed
+
+    private void actionGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionGoActionPerformed
+        student = Student
+                .getStudentFinder()
+                .findRecordById(Long.parseLong(idNumber.getText().replaceAll("-", "")));
+        if (student == null) {
+            actionBorrowItem.setEnabled(false);
+            studentName.setText("");
+        } else {
+            actionBorrowItem.setEnabled(true);
+            studentName.setText(student.getFirstName() + " " + student.getLastName());
+        }
+
+        refreshTable();
+    }//GEN-LAST:event_actionGoActionPerformed
+
+    private void actionBorrowItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionBorrowItemActionPerformed
+        if (quantity.getText().equals("0")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Check quantity: Item not available",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        BorrowedItem borrowedItem = new BorrowedItem();
+        Item item = Item.getFinder().findRecordById(Long.parseLong(itemID.getText()));
+        BorrowedItem borrowItem = borrowedItem.borrowItem(item);
+        student.addBorrowedItem(borrowItem);
+        borrowItem.save();
+        student.update();
+        hasUpdate = true;
+        refreshTable();
+    }//GEN-LAST:event_actionBorrowItemActionPerformed
+
+    private void actionReturnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionReturnItemActionPerformed
+        if (studentHistory.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Error: No selected value",
+                    "Empty Selection",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        } else {
+            boolean returnable = ((String) studentHistory.getValueAt(studentHistory.getSelectedRow(), 3)).equals("NOT YET RETURNED");
+            if (returnable) {
+                long borrowedItem = Long.parseLong((String) studentHistory.getValueAt(studentHistory.getSelectedRow(), 0));
+
+                for (BorrowedItem item : student.getBorrowedItems()) {
+                    if (borrowedItem == item.getId()) {
+                        item.returnItem();
+                        item.update();
+                        student.update();
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Item successfully returned!",
+                                "Success!",
+                                JOptionPane.INFORMATION_MESSAGE
+                        );
+                        hasUpdate = true;
+                        refreshTable();
+                        break;
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Selected item has already been returned!",
+                        "No item to be returned",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
+    }//GEN-LAST:event_actionReturnItemActionPerformed
+
+    public void refreshTable() {
+
+        studentHistory = new javax.swing.JTable();
+
+        studentHistory.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Transaction #", "Item Name", "Borrow Date", "Return Date"
+                }
+        ));
+
+        studentHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        studentHistoryScroller.setViewportView(studentHistory);
+
+        if (studentHistory.getColumnModel().getColumnCount() > 0) {
+            studentHistory.getColumnModel().getColumn(0).setMinWidth(100);
+            studentHistory.getColumnModel().getColumn(0).setPreferredWidth(100);
+            studentHistory.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
+
+        DefaultTableModel dtm = (DefaultTableModel) studentHistory.getModel();
+
+        if (hasUpdate) {
+            student = Student
+                    .getStudentFinder()
+                    .findRecordById(Long.parseLong(idNumber.getText().replaceAll("-", "")));
+            hasUpdate = false;
+        }
+
+        if (student != null) {
+            List<BorrowedItem> borrowedItems = student.getBorrowedItems();
+
+            for (BorrowedItem b : borrowedItems) {
+                String data1 = String.valueOf(b.getId());
+                String data2 = b.getItem().getItemName();
+                String data3 = b.getBorrowDate().toString();
+                String data4 = (b.getReturnDate() == null) ? "NOT YET RETURNED" : b.getReturnDate().toString();
+                String[] data = {data1, data2, data3, data4};
+                dtm.addRow(data);
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -126,10 +481,34 @@ public class BorrowEquipmentInterface extends javax.swing.JFrame {
         });
     }
 
+    private List<Item> items;
+    private DefaultListModel dlm;
+    private Student student;
+    private boolean hasUpdate = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton actionBorrowItem;
+    private javax.swing.JButton actionGo;
+    private javax.swing.JButton actionReturnItem;
+    private javax.swing.JFormattedTextField idNumber;
+    private javax.swing.JTextField itemID;
+    private javax.swing.JList itemList;
+    private javax.swing.JScrollPane itemListScroller;
+    private javax.swing.JTextField itemName;
+    private javax.swing.JTextField itemSearch;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel labelItemID;
+    private javax.swing.JLabel labelItemList;
+    private javax.swing.JLabel labelItemName;
+    private javax.swing.JLabel labelQuantity;
+    private javax.swing.JLabel labelQuickSearch;
+    private javax.swing.JLabel labelStudentID;
+    private javax.swing.JLabel labelStudentName;
+    private javax.swing.JTextField quantity;
+    private javax.swing.JTable studentHistory;
+    private javax.swing.JPanel studentHistoryPane;
+    private javax.swing.JScrollPane studentHistoryScroller;
+    private javax.swing.JTextField studentName;
     // End of variables declaration//GEN-END:variables
 }

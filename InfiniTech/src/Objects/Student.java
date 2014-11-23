@@ -19,6 +19,8 @@ import Enumerations.Department;
 import Enumerations.Gender;
 import Enumerations.YearLevel;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -38,7 +40,7 @@ public class Student extends Model implements Serializable {
     private double payment;
     private String email;
     private String contact;
-    private boolean isCoordinator;    
+    private boolean isCoordinator;
     @OneToOne(cascade = CascadeType.ALL)
     private Shirt shirt;
     @Enumerated(EnumType.STRING)
@@ -46,8 +48,22 @@ public class Student extends Model implements Serializable {
     @Enumerated(EnumType.STRING)
     private YearLevel yearLevel;
     @Enumerated(EnumType.STRING)
-    private Gender gender;
-    
+    private Gender gender;        
+    @OneToMany
+    private List<BorrowedItem> borrowedItems = new ArrayList<>();
+
+    public List<BorrowedItem> getBorrowedItems() {
+        return borrowedItems;
+    }
+
+    public void setBorrowedItems(List<BorrowedItem> borrowedItems) {
+        this.borrowedItems = borrowedItems;
+    }
+
+    public void addBorrowedItem(BorrowedItem borrowedItem) {
+        this.borrowedItems.add(borrowedItem);
+    }
+
     @Transient
     private static final Finder<Student> finder = new Finder<>(Student.class.getSimpleName());
 
@@ -137,7 +153,7 @@ public class Student extends Model implements Serializable {
 
     public void setGender(Gender gender) {
         this.gender = gender;
-    }           
+    }
 
     public static Finder<Student> getStudentFinder() {
         return finder;

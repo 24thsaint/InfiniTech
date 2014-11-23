@@ -13,7 +13,6 @@
  */
 package InterfaceFrames.Main;
 
-import DatabaseConnectivity.Model;
 import Enumerations.LogType;
 import InterfaceFrames.LoginSystem.LoginInterface;
 import InterfaceFrames.LoginSystem.RegistrationInterface;
@@ -63,6 +62,7 @@ public class Dashboard extends javax.swing.JFrame {
         registerNewCouncil = new javax.swing.JButton();
         borrowEquipment = new javax.swing.JButton();
         viewEquipment = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         announcementPane = new javax.swing.JPanel();
         announcementScroller = new javax.swing.JScrollPane();
         announcement = new javax.swing.JTextArea();
@@ -78,6 +78,7 @@ public class Dashboard extends javax.swing.JFrame {
         showLog = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 500));
@@ -124,11 +125,24 @@ public class Dashboard extends javax.swing.JFrame {
         });
         actionsPane.add(registerNewCouncil);
 
-        borrowEquipment.setText("Borrow Equipment");
+        borrowEquipment.setText("Borrow An Equipment");
+        borrowEquipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrowEquipmentActionPerformed(evt);
+            }
+        });
         actionsPane.add(borrowEquipment);
 
-        viewEquipment.setText("View Equipment Inventory");
+        viewEquipment.setText("Manage Equipments");
         actionsPane.add(viewEquipment);
+
+        jButton1.setText("View Students with Registered Shirtsizes");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        actionsPane.add(jButton1);
 
         announcementPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Announcements"));
 
@@ -266,6 +280,14 @@ public class Dashboard extends javax.swing.JFrame {
         });
         showLog.add(jMenuItem2);
 
+        jMenuItem3.setText("Add Equipment");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        showLog.add(jMenuItem3);
+
         tools.add(showLog);
 
         setJMenuBar(tools);
@@ -290,8 +312,8 @@ public class Dashboard extends javax.swing.JFrame {
         infoDepartment.setText("     " + getCouncil().getDepartment().toString());
         infoYearLevel.setText("     " + getCouncil().getYearLevel().toString());
 
-        List<Event> events = Event.getFinder().findAll();
-        for (Event e : events) {
+        List<Event> evts = Event.getFinder().findAll();
+        for (Event e : evts) {
             eventsSelection.addItem(e.getEventName());
         }
 
@@ -369,6 +391,21 @@ public class Dashboard extends javax.swing.JFrame {
         eventInterface.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void borrowEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowEquipmentActionPerformed
+        BorrowEquipmentInterface borrowEquipmentInterface = new BorrowEquipmentInterface();
+        borrowEquipmentInterface.setVisible(true);
+    }//GEN-LAST:event_borrowEquipmentActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        AddEquipmentInterface addEquipmentInterface = new AddEquipmentInterface();
+        addEquipmentInterface.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ShirtInterface shirtInterface = new ShirtInterface();
+        shirtInterface.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void logout() {
         Log log = new Log();
         log.setLogType(LogType.LOGOUT);
@@ -438,9 +475,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField infoDepartment;
     private javax.swing.JTextField infoName;
     private javax.swing.JTextField infoYearLevel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelDepartment;
