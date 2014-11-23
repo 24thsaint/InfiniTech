@@ -195,7 +195,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="viewEquipment">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="View Equipments"/>
+                    <Property name="text" type="java.lang.String" value="View Equipment Inventory"/>
                   </Properties>
                 </Component>
               </SubComponents>

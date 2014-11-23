@@ -41,7 +41,7 @@ public class Model {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(this);
+            em.persist(this);                        
             em.getTransaction().commit();
         } finally {
             em.close();

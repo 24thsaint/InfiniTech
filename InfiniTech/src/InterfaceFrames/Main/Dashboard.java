@@ -127,7 +127,7 @@ public class Dashboard extends javax.swing.JFrame {
         borrowEquipment.setText("Borrow Equipment");
         actionsPane.add(borrowEquipment);
 
-        viewEquipment.setText("View Equipments");
+        viewEquipment.setText("View Equipment Inventory");
         actionsPane.add(viewEquipment);
 
         announcementPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Announcements"));
