@@ -45,7 +45,7 @@ public class Finder<T> implements SearchBehavior<T> {
     }
 
     @Override
-    public T findRecordByField(String field, String key) {   
+    public T findRecordByField(String field, String key) {           
         EntityManager em = Model.getEntityManager();
         Query q = em.createQuery("SELECT o FROM " + this.className + " o WHERE " + field + " LIKE :key");
         q.setParameter("key", "%" + key + "%");

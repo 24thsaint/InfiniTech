@@ -18,6 +18,7 @@ import InterfaceFrames.LoginSystem.LoginInterface;
 import InterfaceFrames.LoginSystem.RegistrationInterface;
 import InterfaceFrames.Tools.EventInterface;
 import InterfaceFrames.Tools.LogInterface;
+import InterfaceFrames.Tools.NukeConfirmInterface;
 import Objects.Council;
 import Objects.Event;
 import Objects.Log;
@@ -79,6 +80,8 @@ public class Dashboard extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 500));
@@ -290,6 +293,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         tools.add(showLog);
 
+        jMenu1.setText("Nuke");
+
+        jMenuItem4.setForeground(new java.awt.Color(255, 0, 51));
+        jMenuItem4.setText("(WARNING) Nuke Database");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        tools.add(jMenu1);
+
         setJMenuBar(tools);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,6 +422,11 @@ public class Dashboard extends javax.swing.JFrame {
         shirtInterface.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        NukeConfirmInterface nukeConfirmInterface = new NukeConfirmInterface();
+        nukeConfirmInterface.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     public void logout() {
         Log log = new Log();
         log.setLogType(LogType.LOGOUT);
@@ -477,9 +498,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField infoYearLevel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelDepartment;

@@ -150,7 +150,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
         rootPanel.add(labelCustomSize);
         rootPanel.add(customSize);
 
-        labelInterest.setText("Interests");
+        labelInterest.setText("Interests (1 interest per line)");
         rootPanel.add(labelInterest);
 
         interests.setColumns(20);

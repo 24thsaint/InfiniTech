@@ -59,5 +59,25 @@ public class Model {
             em.close();
         }
     }
+    
+    public static void nuke() {
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            Query q = em.createNativeQuery(""
+                    + "DROP TABLE "
+                    + "Student_BorrowedItem, "
+                    + "Student_Log, "
+                    + "Log, "                    
+                    + "BorrowedItem, "
+                    + "Event_Student, "
+                    + "Student, "
+                    + "Shirt");
+            q.executeUpdate();
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
 
 }
