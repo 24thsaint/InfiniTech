@@ -6,7 +6,7 @@
 package InterfaceFrames.Main;
 
 import Objects.Student;
-import java.util.ArrayList;
+import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,21 +24,13 @@ public class ShirtInterface extends javax.swing.JFrame {
         students = Student.getStudentFinder().findAll();
         initComponents();
         dtm = (DefaultTableModel) jtable1.getModel();
-
     }
 
     DefaultTableModel dtm;
+    CardLayout card;
+    private String fullName;
 
     private List<Student> students;
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void addStudent(Student student) {
-        this.students.add(student);
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,15 +41,13 @@ public class ShirtInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtable1 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -66,76 +56,45 @@ public class ShirtInterface extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setLayout(new java.awt.CardLayout());
-
         jtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Student ID", "Student Name", "T-Shirt Size"
+                "Student ID", "Student Name", "T-Shirt Size", "Status"
             }
-        ));
-        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable1MouseClicked(evt);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
         jScrollPane2.setViewportView(jtable1);
+        if (jtable1.getColumnModel().getColumnCount() > 0) {
+            jtable1.getColumnModel().getColumn(0).setMinWidth(100);
+            jtable1.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jtable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Menu"));
+        jPanel1.setLayout(new java.awt.GridLayout(0, 1, 0, 5));
 
-        jPanel1.add(jPanel2, "card3");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-
-        jPanel1.add(jPanel3, "card3");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("EDIT SIZE");
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("SEARCH");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("CLAIM SHIRT");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+
+        jLabel1.setText("Search");
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
             }
         });
 
@@ -144,22 +103,32 @@ public class ShirtInterface extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 358, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -168,31 +137,83 @@ public class ShirtInterface extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         for (Student student : students) {
-            String data1 = String.valueOf(student.getId());
+            Long data1 = student.getId();
             String data2 = student.getFirstName() + " " + student.getLastName();
             String data3 = student.getShirt().getShirtSize();
+            String data4 = student.getShirt().hasClaimed() ? "CLAIMED" : "Unclaimed";
 
-            String[] data = {data1, data2, data3};
+            Object[] data = {data1, data2, data3, data4};
             dtm.addRow(data);
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
-        // TODO add your handling code here:
-        if (jtable1.getSelectedRowCount() > 1) {
-            notifier("Please view one patient at a time!", "Message", JOptionPane.WARNING_MESSAGE);
-        } else if (jtable1.getSelectedRowCount() <= 0) {
-            notifier("No selected patient!", "Message", JOptionPane.WARNING_MESSAGE);
-        } else {
+    private void updateTable() {
+        students = Student.getStudentFinder().findAll();
+        jtable1 = new javax.swing.JTable();
 
+        jtable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Student ID", "Student Name", "T-Shirt Size", "Status"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
+
+        jScrollPane2.setViewportView(jtable1);
+
+        if (jtable1.getColumnModel().getColumnCount() > 0) {
+            jtable1.getColumnModel().getColumn(0).setMinWidth(100);
+            jtable1.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jtable1.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
+        dtm = (DefaultTableModel) jtable1.getModel();
 
-    }//GEN-LAST:event_jtable1MouseClicked
+        for (Student student : students) {
+            Long data1 = student.getId();
+            String data2 = student.getFirstName() + " " + student.getLastName();
+            String data3 = student.getShirt().getShirtSize();
+            String data4 = student.getShirt().hasClaimed() ? "CLAIMED" : "Unclaimed";
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+            Object[] data = {data1, data2, data3, data4};
+            dtm.addRow(data);
+        }
+
+        revalidate();
+        repaint();
+    }
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Long studentID = (Long) jtable1.getValueAt(jtable1.getSelectedRow(), 0);
+        Student student = Student.getStudentFinder().findRecordById(studentID);
+        if (student.getShirt().hasClaimed()) {
+            notifier("Warning: Shirt has been already claimed!", "Already claimed", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        student.getShirt().setClaimed(true);
+        student.update();
+
+        notifier("Shirt successfully claimed!", "Claimed!", JOptionPane.INFORMATION_MESSAGE);
+        updateTable();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId().toString().contains(jTextField1.getText())) {
+                jtable1.setRowSelectionInterval(i, i);
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
     private void notifier(String message, String title, int alertType) {
         JOptionPane.showMessageDialog(null, message, title, alertType);
     }
@@ -211,16 +232,21 @@ public class ShirtInterface extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShirtInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShirtInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShirtInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShirtInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShirtInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShirtInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShirtInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShirtInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -233,14 +259,12 @@ public class ShirtInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable jtable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,7 +32,7 @@ public class Inventory {
         this.items = items;
     }
 
-    protected Inventory() {
+    private Inventory() {
 
     }
 
