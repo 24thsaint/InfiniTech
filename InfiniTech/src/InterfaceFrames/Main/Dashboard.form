@@ -216,7 +216,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="borrowEquipment">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Borrow An Equipment"/>
+                    <Property name="text" type="java.lang.String" value="Borrow/Return an Equipment"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="borrowEquipmentActionPerformed"/>
@@ -224,8 +224,11 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="viewEquipment">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Manage Equipments"/>
+                    <Property name="text" type="java.lang.String" value="Show Unreturned Equipments"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewEquipmentActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton1">
                   <Properties>
@@ -367,7 +370,7 @@
                       <Table columnCount="5" rowCount="0">
                         <Column editable="true" title="Student ID" type="java.lang.Object"/>
                         <Column editable="true" title="Student Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Department" type="java.lang.Object"/>
+                        <Column editable="true" title="Contact Number" type="java.lang.Object"/>
                         <Column editable="true" title="Year" type="java.lang.Object"/>
                         <Column editable="true" title="Interest" type="java.lang.Object"/>
                       </Table>

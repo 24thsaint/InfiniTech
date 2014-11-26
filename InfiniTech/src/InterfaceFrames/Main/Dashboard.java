@@ -128,7 +128,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         actionsPane.add(registerNewCouncil);
 
-        borrowEquipment.setText("Borrow An Equipment");
+        borrowEquipment.setText("Borrow/Return an Equipment");
         borrowEquipment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrowEquipmentActionPerformed(evt);
@@ -136,7 +136,12 @@ public class Dashboard extends javax.swing.JFrame {
         });
         actionsPane.add(borrowEquipment);
 
-        viewEquipment.setText("Manage Equipments");
+        viewEquipment.setText("Show Unreturned Equipments");
+        viewEquipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewEquipmentActionPerformed(evt);
+            }
+        });
         actionsPane.add(viewEquipment);
 
         jButton1.setText("View Students with Registered Shirtsizes");
@@ -221,7 +226,7 @@ public class Dashboard extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID", "Student Name", "Department", "Year", "Interest"
+                "Student ID", "Student Name", "Contact Number", "Year", "Interest"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -369,7 +374,7 @@ public class Dashboard extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Student ID", "Student Name", "Department", "Year", "Interest"
+                    "Student ID", "Student Name", "Contact Number", "Year", "Interest"
                 }
         ));
 
@@ -392,7 +397,7 @@ public class Dashboard extends javax.swing.JFrame {
         for (Student rep : reps) {
             String data1 = String.valueOf(rep.getId());
             String data2 = rep.getFirstName() + " " + rep.getLastName();
-            String data3 = rep.getDepartment().toString();
+            String data3 = rep.getContact();
             String data4 = rep.getYearLevel().toString();
             String data5 = rep.getInterest().replaceAll("\n", ",");
 
@@ -426,6 +431,11 @@ public class Dashboard extends javax.swing.JFrame {
         NukeConfirmInterface nukeConfirmInterface = new NukeConfirmInterface();
         nukeConfirmInterface.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void viewEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewEquipmentActionPerformed
+        UnreturnedEquipmentsInterface unreturnedEquipmentsInterface = new UnreturnedEquipmentsInterface();
+        unreturnedEquipmentsInterface.setVisible(true);
+    }//GEN-LAST:event_viewEquipmentActionPerformed
 
     public void logout() {
         Log log = new Log();

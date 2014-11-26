@@ -319,7 +319,6 @@ public class RegistrationInterface extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println("Student already exists for event!");
                 }
-                break;
             }
         }
         JOptionPane.showMessageDialog(

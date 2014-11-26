@@ -13,7 +13,6 @@
  */
 package Objects;
 
-import Classes.Interfaces.exceptions.NonexistentEntityException;
 import DatabaseConnectivity.Finder;
 import DatabaseConnectivity.Model;
 import java.io.Serializable;
@@ -44,7 +43,7 @@ public class Event extends Model implements Serializable {
     public static Finder<Event> getFinder() {
         return finder;
     }
-    
+
     public static void delete(Event e) {
         EntityManager em = null;
         try {
