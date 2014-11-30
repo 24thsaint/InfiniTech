@@ -25,6 +25,7 @@ import Objects.Log;
 import Objects.Student;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -75,6 +76,39 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        searchStudentPanel = new javax.swing.JPanel();
+        studentDetailsPane = new javax.swing.JPanel();
+        labelIDNumber = new javax.swing.JLabel();
+        idNumber = new javax.swing.JTextField();
+        labelFirstName = new javax.swing.JLabel();
+        firstName = new javax.swing.JTextField();
+        labelLastName = new javax.swing.JLabel();
+        lastName = new javax.swing.JTextField();
+        departmentLabel = new javax.swing.JLabel();
+        department = new javax.swing.JTextField();
+        labelYear = new javax.swing.JLabel();
+        year = new javax.swing.JTextField();
+        labelGender = new javax.swing.JLabel();
+        gender = new javax.swing.JTextField();
+        labelShirtSize = new javax.swing.JLabel();
+        shirtSize = new javax.swing.JTextField();
+        labelEmail = new javax.swing.JLabel();
+        email = new javax.swing.JTextField();
+        labelContactNumber = new javax.swing.JLabel();
+        contactNumber = new javax.swing.JTextField();
+        spacer = new javax.swing.JLabel();
+        actionUpdate = new javax.swing.JButton();
+        labelSearchKeyword = new javax.swing.JLabel();
+        passwordsPane = new javax.swing.JPanel();
+        labelOldPassword = new javax.swing.JLabel();
+        oldPassword = new javax.swing.JTextField();
+        labelNewPassword = new javax.swing.JLabel();
+        newPassword = new javax.swing.JTextField();
+        labelConfirmPassword = new javax.swing.JLabel();
+        confirmPassword = new javax.swing.JTextField();
+        actionChangePassword = new javax.swing.JButton();
+        actionSearch = new javax.swing.JButton();
+        keyword = new javax.swing.JFormattedTextField();
         tools = new javax.swing.JMenuBar();
         showLog = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -187,7 +221,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(dashboardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dashboardTabLayout.createSequentialGroup()
-                        .addComponent(coucilDetailPane, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                        .addComponent(coucilDetailPane, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(announcementPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,7 +239,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(announcementPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(actionsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -248,7 +282,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(eventsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(eventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                     .addGroup(eventsLayout.createSequentialGroup()
                         .addGroup(eventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(filterEventPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,11 +298,164 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabs.addTab("Events", events);
+
+        studentDetailsPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        studentDetailsPane.setLayout(new java.awt.GridLayout(0, 2));
+
+        labelIDNumber.setText("ID Number");
+        studentDetailsPane.add(labelIDNumber);
+        studentDetailsPane.add(idNumber);
+
+        labelFirstName.setText("First Name");
+        studentDetailsPane.add(labelFirstName);
+        studentDetailsPane.add(firstName);
+
+        labelLastName.setText("Last Name");
+        studentDetailsPane.add(labelLastName);
+        studentDetailsPane.add(lastName);
+
+        departmentLabel.setText("Department");
+        studentDetailsPane.add(departmentLabel);
+        studentDetailsPane.add(department);
+
+        labelYear.setText("Year");
+        studentDetailsPane.add(labelYear);
+        studentDetailsPane.add(year);
+
+        labelGender.setText("Gender");
+        studentDetailsPane.add(labelGender);
+        studentDetailsPane.add(gender);
+
+        labelShirtSize.setText("Shirt Size");
+        studentDetailsPane.add(labelShirtSize);
+        studentDetailsPane.add(shirtSize);
+
+        labelEmail.setText("Email");
+        studentDetailsPane.add(labelEmail);
+        studentDetailsPane.add(email);
+
+        labelContactNumber.setText("Contact Number");
+        studentDetailsPane.add(labelContactNumber);
+        studentDetailsPane.add(contactNumber);
+        studentDetailsPane.add(spacer);
+
+        actionUpdate.setText("Update");
+        studentDetailsPane.add(actionUpdate);
+
+        labelSearchKeyword.setText("ID Number");
+
+        passwordsPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        labelOldPassword.setText("Old Password");
+
+        labelNewPassword.setText("New Password");
+
+        labelConfirmPassword.setText("Confirm Password");
+
+        actionChangePassword.setText("Change Password");
+
+        javax.swing.GroupLayout passwordsPaneLayout = new javax.swing.GroupLayout(passwordsPane);
+        passwordsPane.setLayout(passwordsPaneLayout);
+        passwordsPaneLayout.setHorizontalGroup(
+            passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passwordsPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(passwordsPaneLayout.createSequentialGroup()
+                        .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(passwordsPaneLayout.createSequentialGroup()
+                                .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelNewPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(passwordsPaneLayout.createSequentialGroup()
+                                .addComponent(labelOldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(24, 24, 24)))
+                        .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(oldPassword)
+                            .addComponent(newPassword)
+                            .addComponent(confirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passwordsPaneLayout.createSequentialGroup()
+                        .addGap(0, 123, Short.MAX_VALUE)
+                        .addComponent(actionChangePassword)))
+                .addContainerGap())
+        );
+        passwordsPaneLayout.setVerticalGroup(
+            passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passwordsPaneLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelOldPassword)
+                    .addComponent(oldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNewPassword)
+                    .addComponent(newPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(passwordsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelConfirmPassword)
+                    .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actionChangePassword)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        actionSearch.setText("Search");
+        actionSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionSearchActionPerformed(evt);
+            }
+        });
+
+        try {
+            keyword.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        javax.swing.GroupLayout searchStudentPanelLayout = new javax.swing.GroupLayout(searchStudentPanel);
+        searchStudentPanel.setLayout(searchStudentPanelLayout);
+        searchStudentPanelLayout.setHorizontalGroup(
+            searchStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchStudentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(searchStudentPanelLayout.createSequentialGroup()
+                        .addComponent(labelSearchKeyword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(keyword))
+                    .addComponent(studentDetailsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passwordsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(searchStudentPanelLayout.createSequentialGroup()
+                        .addComponent(actionSearch)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        searchStudentPanelLayout.setVerticalGroup(
+            searchStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchStudentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSearchKeyword)
+                    .addComponent(actionSearch)
+                    .addComponent(keyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(studentDetailsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                    .addGroup(searchStudentPanelLayout.createSequentialGroup()
+                        .addComponent(passwordsPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        tabs.addTab("Search/Edit Student Information", searchStudentPanel);
 
         showLog.setText("Tools");
 
@@ -339,6 +526,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
 
         eventsSelection.setSelectedIndex(0);
+        passwordsPane.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -349,7 +537,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void registerNewCouncilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewCouncilActionPerformed
         RegistrationInterface registrationInterface = new RegistrationInterface();
-        registrationInterface.activateGodAccount();
+        registrationInterface.activateCouncilRegistration();
         registrationInterface.setVisible(true);
     }//GEN-LAST:event_registerNewCouncilActionPerformed
 
@@ -437,6 +625,34 @@ public class Dashboard extends javax.swing.JFrame {
         unreturnedEquipmentsInterface.setVisible(true);
     }//GEN-LAST:event_viewEquipmentActionPerformed
 
+    private void actionSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionSearchActionPerformed
+        student = Student.getStudentFinder()
+                .findRecordById(Long.parseLong(keyword.getText().replaceAll("-", "")));
+
+        if (student == null) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Student with ID number " + keyword.getText() + " does not exist!",
+                    "Does not exist",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        idNumber.setText("" + student.getId());
+        firstName.setText(student.getFirstName());
+        lastName.setText(student.getLastName());
+        department.setText(student.getDepartment().toString());
+        year.setText(student.getYearLevel().toString());
+        gender.setText(student.getGender().toString());
+        shirtSize.setText(student.getShirt().getShirtSize());
+        email.setText(student.getEmail());
+        contactNumber.setText(student.getContact());
+        
+        if (student instanceof Council) {
+            passwordsPane.setVisible(true);
+        }
+    }//GEN-LAST:event_actionSearchActionPerformed
+
     public void logout() {
         Log log = new Log();
         log.setLogType(LogType.LOGOUT);
@@ -492,17 +708,29 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     private static Council council;
+    private Student student;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actionChangePassword;
+    private javax.swing.JButton actionSearch;
+    private javax.swing.JButton actionUpdate;
     private javax.swing.JPanel actionsPane;
     private javax.swing.JTextArea announcement;
     private javax.swing.JPanel announcementPane;
     private javax.swing.JScrollPane announcementScroller;
     private javax.swing.JButton borrowEquipment;
+    private javax.swing.JTextField confirmPassword;
+    private javax.swing.JTextField contactNumber;
     private javax.swing.JPanel coucilDetailPane;
     private javax.swing.JPanel dashboardTab;
+    private javax.swing.JTextField department;
+    private javax.swing.JLabel departmentLabel;
+    private javax.swing.JTextField email;
     private javax.swing.JPanel events;
     private javax.swing.JComboBox eventsSelection;
     private javax.swing.JPanel filterEventPane;
+    private javax.swing.JTextField firstName;
+    private javax.swing.JTextField gender;
+    private javax.swing.JTextField idNumber;
     private javax.swing.JTextField infoDepartment;
     private javax.swing.JTextField infoName;
     private javax.swing.JTextField infoYearLevel;
@@ -515,16 +743,38 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JFormattedTextField keyword;
+    private javax.swing.JLabel labelConfirmPassword;
+    private javax.swing.JLabel labelContactNumber;
     private javax.swing.JLabel labelDepartment;
+    private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelEvent;
+    private javax.swing.JLabel labelFirstName;
+    private javax.swing.JLabel labelGender;
+    private javax.swing.JLabel labelIDNumber;
+    private javax.swing.JLabel labelLastName;
     private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelNewPassword;
+    private javax.swing.JLabel labelOldPassword;
+    private javax.swing.JLabel labelSearchKeyword;
+    private javax.swing.JLabel labelShirtSize;
+    private javax.swing.JLabel labelYear;
     private javax.swing.JLabel labelYearLevel;
+    private javax.swing.JTextField lastName;
     private javax.swing.JButton logout;
+    private javax.swing.JTextField newPassword;
+    private javax.swing.JTextField oldPassword;
+    private javax.swing.JPanel passwordsPane;
     private javax.swing.JButton registerNewCouncil;
     private javax.swing.JButton registerNewStudent;
+    private javax.swing.JPanel searchStudentPanel;
+    private javax.swing.JTextField shirtSize;
     private javax.swing.JMenu showLog;
+    private javax.swing.JLabel spacer;
+    private javax.swing.JPanel studentDetailsPane;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JMenuBar tools;
     private javax.swing.JButton viewEquipment;
+    private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
 }

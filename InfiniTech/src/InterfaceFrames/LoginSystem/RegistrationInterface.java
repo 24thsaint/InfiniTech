@@ -260,7 +260,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
         System.out.println(shirt.getShirtSize());
         System.out.println(shirt.hasClaimed());
 
-        if (godAccountActive) {
+        if (councilAccounRegistration) {
             Council regCouncil = new Council();
             regCouncil.setId(Long.parseLong(id));
             regCouncil.setFirstName(firstName.getText());
@@ -335,9 +335,9 @@ public class RegistrationInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_shirtSizeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        labelPassword.setVisible(godAccountActive);
-        password.setVisible(godAccountActive);
-        labelHeader.setText(godAccountActive
+        labelPassword.setVisible(councilAccounRegistration);
+        password.setVisible(councilAccounRegistration);
+        labelHeader.setText(councilAccounRegistration
                 ? "Council Registration" : "Student Registration");
         customSize.setVisible(false);
         labelCustomSize.setVisible(false);
@@ -386,8 +386,8 @@ public class RegistrationInterface extends javax.swing.JFrame {
         });
     }
 
-    public void activateGodAccount() {
-        godAccountActive = true;
+    public void activateCouncilRegistration() {
+        councilAccounRegistration = true;
     }
 
     public Council getCouncil() {
@@ -398,7 +398,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
         this.council = council;
     }
 
-    private boolean godAccountActive = false;
+    private boolean councilAccounRegistration = false;
     private Council council;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actionCancel;

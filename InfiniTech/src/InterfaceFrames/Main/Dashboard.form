@@ -116,7 +116,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="coucilDetailPane" pref="266" max="32767" attributes="0"/>
+                              <Component id="coucilDetailPane" pref="274" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="announcementPane" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -140,7 +140,7 @@
                           <Component id="logout" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="actionsPane" pref="238" max="32767" attributes="0"/>
+                      <Component id="actionsPane" pref="241" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -308,7 +308,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" pref="627" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="635" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="filterEventPane" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -329,7 +329,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="385" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="388" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -414,6 +414,269 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Potential Representatives"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="searchStudentPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Search/Edit Student Information">
+                <Property name="tabTitle" type="java.lang.String" value="Search/Edit Student Information"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="labelSearchKeyword" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="keyword" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="studentDetailsPane" min="-2" pref="350" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="passwordsPane" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="actionSearch" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelSearchKeyword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="actionSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="keyword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="studentDetailsPane" pref="417" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="passwordsPane" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="studentDetailsPane">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="2"/>
+                <Property name="rows" type="int" value="0"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="labelIDNumber">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Number"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="idNumber">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelFirstName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="First Name"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="firstName">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelLastName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Last Name"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="lastName">
+                </Component>
+                <Component class="javax.swing.JLabel" name="departmentLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Department"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="department">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelYear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Year"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="year">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelGender">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gender"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="gender">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelShirtSize">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Shirt Size"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="shirtSize">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelEmail">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Email"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="email">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelContactNumber">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Contact Number"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="contactNumber">
+                </Component>
+                <Component class="javax.swing.JLabel" name="spacer">
+                </Component>
+                <Component class="javax.swing.JButton" name="actionUpdate">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Update"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="labelSearchKeyword">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Number"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JPanel" name="passwordsPane">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="labelConfirmPassword" max="32767" attributes="0"/>
+                                              <Component id="labelNewPassword" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="labelOldPassword" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="oldPassword" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="newPassword" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="confirmPassword" alignment="0" pref="146" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="123" max="32767" attributes="0"/>
+                                  <Component id="actionChangePassword" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelOldPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="oldPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelNewPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="newPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelConfirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="confirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="actionChangePassword" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="labelOldPassword">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Old Password"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="oldPassword">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelNewPassword">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="New Password"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="newPassword">
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelConfirmPassword">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Confirm Password"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="confirmPassword">
+                </Component>
+                <Component class="javax.swing.JButton" name="actionChangePassword">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Change Password"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="actionSearch">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Search"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actionSearchActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="keyword">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##-####-##" subtype="-1" type="5"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

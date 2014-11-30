@@ -81,7 +81,7 @@ public class GodInterface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         RegistrationInterface ri = new RegistrationInterface();
-        ri.activateGodAccount();
+        ri.activateCouncilRegistration();
         ri.setVisible(true);
         
         EventInterface eventInterface = new EventInterface();
