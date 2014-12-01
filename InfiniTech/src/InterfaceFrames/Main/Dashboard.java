@@ -34,6 +34,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Dashboard extends javax.swing.JFrame {
 
+    private static final FundsInterface fundInterface = new FundsInterface();
     /**
      * Creates new form Dashboard
      */
@@ -65,6 +66,7 @@ public class Dashboard extends javax.swing.JFrame {
         borrowEquipment = new javax.swing.JButton();
         viewEquipment = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        fundButton = new javax.swing.JButton();
         announcementPane = new javax.swing.JPanel();
         announcementScroller = new javax.swing.JScrollPane();
         announcement = new javax.swing.JTextArea();
@@ -185,6 +187,14 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         actionsPane.add(jButton1);
+
+        fundButton.setText("Funds");
+        fundButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fundButtonActionPerformed(evt);
+            }
+        });
+        actionsPane.add(fundButton);
 
         announcementPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Announcements"));
 
@@ -637,7 +647,7 @@ public class Dashboard extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         idNumber.setText("" + student.getId());
         firstName.setText(student.getFirstName());
         lastName.setText(student.getLastName());
@@ -647,11 +657,24 @@ public class Dashboard extends javax.swing.JFrame {
         shirtSize.setText(student.getShirt().getShirtSize());
         email.setText(student.getEmail());
         contactNumber.setText(student.getContact());
-        
+
         if (student instanceof Council) {
             passwordsPane.setVisible(true);
         }
     }//GEN-LAST:event_actionSearchActionPerformed
+
+    private void fundButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundButtonActionPerformed
+        // TODO add your handling code here:
+        String idString = JOptionPane.showInputDialog( "ID Number:" );
+        long idSearch = Long.parseLong(idString);
+        Student studentSearch = Student.getStudentFinder().findRecordById(idSearch);
+        if (studentSearch.isCoordinator()){
+            fundInterface.setVisible(true);
+        }
+        else{
+            fundInterface.dispose();
+        }
+    }//GEN-LAST:event_fundButtonActionPerformed
 
     public void logout() {
         Log log = new Log();
@@ -729,6 +752,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox eventsSelection;
     private javax.swing.JPanel filterEventPane;
     private javax.swing.JTextField firstName;
+    private javax.swing.JButton fundButton;
     private javax.swing.JTextField gender;
     private javax.swing.JTextField idNumber;
     private javax.swing.JTextField infoDepartment;

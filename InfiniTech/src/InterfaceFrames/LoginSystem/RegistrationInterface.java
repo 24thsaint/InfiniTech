@@ -68,6 +68,8 @@ public class RegistrationInterface extends javax.swing.JFrame {
         contact = new javax.swing.JTextField();
         labelPayment = new javax.swing.JLabel();
         payment = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        coordinatorCheck = new javax.swing.JCheckBox();
         actionRegister = new javax.swing.JButton();
         actionCancel = new javax.swing.JButton();
 
@@ -82,7 +84,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
         labelHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelHeader.setText("Register Student");
 
-        rootPanel.setLayout(new java.awt.GridLayout(13, 2));
+        rootPanel.setLayout(new java.awt.GridLayout(0, 2));
 
         labelIDNumber.setText("ID Number");
         rootPanel.add(labelIDNumber);
@@ -175,6 +177,22 @@ public class RegistrationInterface extends javax.swing.JFrame {
         payment.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         payment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         rootPanel.add(payment);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 28, Short.MAX_VALUE)
+        );
+
+        rootPanel.add(jPanel2);
+
+        coordinatorCheck.setText("Coordinator");
+        rootPanel.add(coordinatorCheck);
 
         actionRegister.setText("Register");
         actionRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -275,6 +293,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
             regCouncil.setEmail(email.getText());
             regCouncil.setContact(contact.getText());
             regCouncil.setPayment(Double.parseDouble(payment.getText()));
+            regCouncil.setCoordinator(coordinatorCheck.isSelected());
             regCouncil.save();
         } else {
             Student student = new Student();
@@ -289,7 +308,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
             student.setEmail(email.getText());
             student.setContact(contact.getText());
             student.setPayment(Double.parseDouble(payment.getText()));
-
+            student.setCoordinator(coordinatorCheck.isSelected());
             student.save();
 
             Log log = new Log();
@@ -404,6 +423,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
     private javax.swing.JButton actionCancel;
     private javax.swing.JButton actionRegister;
     private javax.swing.JTextField contact;
+    private javax.swing.JCheckBox coordinatorCheck;
     private javax.swing.JTextField customSize;
     private javax.swing.JComboBox department;
     private javax.swing.JTextField email;
@@ -413,6 +433,7 @@ public class RegistrationInterface extends javax.swing.JFrame {
     private javax.swing.JScrollPane interestScroller;
     private javax.swing.JTextArea interests;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelContact;
     private javax.swing.JLabel labelCustomSize;
     private javax.swing.JLabel labelDepartment;

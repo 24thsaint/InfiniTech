@@ -115,11 +115,11 @@ public class Student extends Model implements Serializable {
         this.contact = contact;
     }
 
-    public boolean isIsCoordinator() {
+    public boolean isCoordinator() {
         return isCoordinator;
     }
 
-    public void setIsCoordinator(boolean isCoordinator) {
+    public void setCoordinator(boolean isCoordinator) {
         this.isCoordinator = isCoordinator;
     }
 

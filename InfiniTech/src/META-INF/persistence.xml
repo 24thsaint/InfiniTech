@@ -8,6 +8,7 @@
     <class>Objects.Item</class>
     <class>Objects.Inventory</class>
     <class>Objects.BorrowedItem</class>
+    <class>Objects.Fund</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/esc?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
