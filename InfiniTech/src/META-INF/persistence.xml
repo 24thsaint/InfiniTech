@@ -2,13 +2,13 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="Engineering_Record_SystemPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>Objects.Student</class>
-    <class>Objects.Council</class>
-    <class>Objects.Event</class>
-    <class>Objects.Item</class>
-    <class>Objects.Inventory</class>
-    <class>Objects.BorrowedItem</class>
-    <class>Objects.Fund</class>
+    <class>com.infinitech.objects.Item</class>
+    <class>com.infinitech.objects.Student</class>
+    <class>com.infinitech.objects.Inventory</class>
+    <class>com.infinitech.objects.Event</class>
+    <class>com.infinitech.objects.Council</class>
+    <class>com.infinitech.objects.BorrowedItem</class>
+    <class>com.infinitech.objects.Fund</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/esc?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
